@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact name="SMM:jar">
+    <output-path>$USER_HOME$/Temp/artifacts/SMM_jar</output-path>
+    <root id="root">
+      <element id="archive" name="SMM.jar">
+        <element id="directory" name="META-INF">
+          <element id="file-copy" path="$PROJECT_DIR$/source/META-INF/MANIFEST.MF" />
+        </element>
+        <element id="module-output" name="SMM" />
+      </element>
+      <element id="library" level="project" name="lib" />
+    </root>
+  </artifact>
+</component>

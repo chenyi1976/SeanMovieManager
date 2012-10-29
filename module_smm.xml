@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_smm" default="compile.module.smm">
+  <dirname property="module.smm.basedir" file="${ant.file.module_smm}"/>
+  
+  <property name="module.jdk.home.smm" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.smm" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.smm" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.smm" value="${compiler.args}"/>
+  
+  <property name="smm.output.dir" value="C:/Users/seanc/Temp/production/SMM"/>
+  <property name="smm.testoutput.dir" value="C:/Users/seanc/Temp/test/SMM"/>
+  
+  <path id="smm.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="smm.module.production.classpath">
+    <path refid="${module.jdk.classpath.smm}"/>
+    <path refid="library.lib.classpath"/>
+  </path>
+  
+  <path id="smm.runtime.production.module.classpath">
+    <pathelement location="${smm.output.dir}"/>
+    <path refid="library.lib.classpath"/>
+  </path>
+  
+  <path id="smm.module.classpath">
+    <path refid="${module.jdk.classpath.smm}"/>
+    <pathelement location="${smm.output.dir}"/>
+    <path refid="library.lib.classpath"/>
+  </path>
+  
+  <path id="smm.runtime.module.classpath">
+    <pathelement location="${smm.testoutput.dir}"/>
+    <pathelement location="${smm.output.dir}"/>
+    <path refid="library.lib.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.smm">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.smm">
+    <patternset refid="excluded.from.module.smm"/>
+  </patternset>
+  
+  <path id="smm.module.sourcepath">
+    <dirset dir="${module.smm.basedir}">
+      <include name="source"/>
+      <include name="resources"/>
+    </dirset>
+  </path>
+  
+  <path id="smm.module.test.sourcepath">
+    <dirset dir="${module.smm.basedir}">
+      <include name="test"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.smm" depends="compile.module.smm.production,compile.module.smm.tests" description="Compile module SMM"/>
+  
+  <target name="compile.module.smm.production" description="Compile module SMM; production classes">
+    <mkdir dir="${smm.output.dir}"/>
+    <javac destdir="${smm.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.smm}/javac">
+      <compilerarg line="${compiler.args.smm}"/>
+      <bootclasspath refid="smm.module.bootclasspath"/>
+      <classpath refid="smm.module.production.classpath"/>
+      <src refid="smm.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.smm"/>
+    </javac>
+    
+    <copy todir="${smm.output.dir}">
+      <fileset dir="${module.smm.basedir}/source">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.smm.basedir}/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.smm.tests" depends="compile.module.smm.production" description="compile module SMM; test classes" unless="skip.tests">
+    <mkdir dir="${smm.testoutput.dir}"/>
+    <javac destdir="${smm.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.smm}/javac">
+      <compilerarg line="${compiler.args.smm}"/>
+      <bootclasspath refid="smm.module.bootclasspath"/>
+      <classpath refid="smm.module.classpath"/>
+      <src refid="smm.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.smm"/>
+    </javac>
+    
+    <copy todir="${smm.testoutput.dir}">
+      <fileset dir="${module.smm.basedir}/test">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.smm" description="cleanup module">
+    <delete dir="${smm.output.dir}"/>
+    <delete dir="${smm.testoutput.dir}"/>
+  </target>
+</project>

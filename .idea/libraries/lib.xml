@@ -1,0 +1,30 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/lib" />
+      <root url="file://$PROJECT_DIR$/lib/cobra" />
+      <root url="file://$PROJECT_DIR$/lib/drivers" />
+      <root url="file://$PROJECT_DIR$/lib/jython" />
+      <root url="file://$PROJECT_DIR$/lib/mac" />
+      <root url="file://$PROJECT_DIR$/lib/tmdb" />
+      <root url="file://$PROJECT_DIR$/lib" />
+      <root url="file://$PROJECT_DIR$/lib/cobra" />
+      <root url="file://$PROJECT_DIR$/lib/drivers" />
+      <root url="file://$PROJECT_DIR$/lib/jython" />
+      <root url="file://$PROJECT_DIR$/lib/mac" />
+      <root url="file://$PROJECT_DIR$/lib/tmdb" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/lib" />
+      <root url="file://$PROJECT_DIR$/lib" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/lib" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/lib/cobra" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/lib/drivers" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/lib/jython" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/lib/mac" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/lib/tmdb" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/lib" recursive="false" type="SOURCES" />
+  </library>
+</component>
