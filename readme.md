@@ -15,6 +15,12 @@ I start from find a usable movie manager for myself. I did a lot research, but m
 
 I start by adding function to Med's Movie Manager, but suddenly it graps me and I get a madness to decide create a totally different one.
 
+# Sorry if anything is wrong #
+
+I am a newbie with open source, so maybe did something wrong, for example, I include other open source project in my code, only because it is more convenient to debug.
+
+Please let me know if anything is wrong.
+
 # How it look like #
 
 Here is the screenshot(todo)
@@ -24,3 +30,4 @@ Here is the screenshot(todo)
 - It support python plugin.
 - It focus the downloaded/ripped movie management
 - (todo)
+
