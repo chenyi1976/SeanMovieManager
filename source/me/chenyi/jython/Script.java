@@ -1,5 +1,6 @@
 package me.chenyi.jython;
 
+import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 
@@ -17,12 +18,25 @@ public class Script
     private ScriptTriggerType triggerType;
     private String name;
     private String scriptContent;
-    private File file;
+    private String scriptFileLocation;
+    private ImageIcon scriptIcon;
 
     public Script(ScriptTriggerType triggerType, String name)
     {
         this.triggerType = triggerType;
         this.name = name;
+
+        String absolutePath = "";
+        try
+        {
+            absolutePath = SysUtil.getConfigDir().getAbsolutePath();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        scriptFileLocation = absolutePath + "/plugin/" + triggerType.getTriggerTypeName() + "_" + name + ".py";
+        scriptIcon = new ImageIcon(absolutePath + "/plugin/" + triggerType.getTriggerTypeName() + "_" + name + ".png");
     }
 
     public String getName()
@@ -37,15 +51,12 @@ public class Script
 
     public String getScriptFileLocation()
     {
-        try
-        {
-            return SysUtil.getConfigDir().getAbsolutePath() + "/plugin/" + triggerType.getTriggerTypeName() + "_" + name + ".py";
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-            return null;
-        }
+        return scriptFileLocation;
+    }
+
+    public ImageIcon getScriptIcon()
+    {
+        return scriptIcon;
     }
 
     public String getScriptContent()

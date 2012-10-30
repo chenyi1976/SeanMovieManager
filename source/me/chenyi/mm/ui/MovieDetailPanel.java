@@ -98,6 +98,8 @@ public class MovieDetailPanel extends AlphaPanel{
             JButton button = new JButton(new ScriptAction(script));
             button.setOpaque(false);
             button.setToolTipText(script.getName());
+            button.setText("");
+            button.setIcon(script.getScriptIcon());
             button.setPreferredSize(new Dimension(48, 48));
             button.setMinimumSize(new Dimension(48, 48));
             pluginPanel.add(button);
