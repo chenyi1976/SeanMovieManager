@@ -7,9 +7,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5177189b-607e-4f09-a1c7-3c481130250c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/jython/cachedir/packages/packages.idx" afterPath="$PROJECT_DIR$/lib/jython/cachedir/packages/packages.idx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/icon/Movies_box_Film.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/icon/Movies_box_Sean.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/icon/Movies_box_SeanMovie.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/icon/Movies_box_Star.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/icon/Movies_box_blank.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/icon/Movies_box_eye.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/icon/Movies_box_joker.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/icon/Movies_box_lip.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/document/design/design.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/readme.md" afterPath="$PROJECT_DIR$/readme.md" />
     </list>
     <ignored path="MMM.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -67,10 +75,58 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MovieDetailPanel.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="MovieDetailPanel.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/source/me/chenyi/mm/ui/MovieDetailPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="113" column="111" selection-start="4020" selection-end="4020" vertical-scroll-proportion="0.15650173">
+            <state line="113" column="111" selection-start="4020" selection-end="4020" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="design.md" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/document/design/design.md">
+          <provider editor-type-id="MarkdownPreviewEditor">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="28" column="49" selection-start="504" selection-end="504" vertical-scroll-proportion="-21.636364">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="readme.md" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/readme.md">
+          <provider editor-type-id="MarkdownPreviewEditor">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="17" column="16" selection-start="657" selection-end="657" vertical-scroll-proportion="0.28817734">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="201208.md" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/document/devlog/201208.md">
+          <provider editor-type-id="MarkdownPreviewEditor">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="16" selection-start="80" selection-end="80" vertical-scroll-proportion="-0.77272725">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Database.md" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/document/help/Database.md">
+          <provider editor-type-id="MarkdownPreviewEditor">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
               <folding />
             </state>
           </provider>
@@ -134,7 +190,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/source/me/chenyi/mm/model/ModelEventListener.java" />
         <option value="$PROJECT_DIR$/source/me/chenyi/mm/model/ModelUtils.java" />
         <option value="$PROJECT_DIR$/source/me/chenyi/mm/model/ModelEventProxy.java" />
         <option value="$PROJECT_DIR$/source/me/chenyi/mm/ui/MovieMainPanel.java" />
@@ -146,10 +201,11 @@
         <option value="$PROJECT_DIR$/source/me/chenyi/mm/model/DatabaseUtil.java" />
         <option value="$PROJECT_DIR$/resources/plugin/ItemDetailButton_helloworld.py" />
         <option value="$PROJECT_DIR$/source/me/chenyi/mm/ui/MovieDetailPanel.java" />
-        <option value="$PROJECT_DIR$/readme.md" />
         <option value="$PROJECT_DIR$/devlog/201208.md" />
         <option value="$PROJECT_DIR$/devlog/201209.md" />
         <option value="$PROJECT_DIR$/devlog/201210.md" />
+        <option value="$PROJECT_DIR$/document/design/design.md" />
+        <option value="$PROJECT_DIR$/readme.md" />
       </list>
     </option>
   </component>
@@ -207,6 +263,20 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SMM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SMM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -289,18 +359,22 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-        </subPane>
-      </pane>
-      <pane id="PackagesPane">
-        <subPane>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="SMM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="SMM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+              <option name="myItemId" value="SeanMovieManager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="document" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="design" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -320,16 +394,16 @@
   <component name="PropertiesComponent">
     <property name="GenerateAntBuildDialog.generateIdeaHomeProperty" value="false" />
     <property name="project.structure.last.edited" value="Artifacts" />
-    <property name="OverrideImplement.combined" value="true" />
     <property name="project.structure.proportion" value="0.13797814" />
+    <property name="OverrideImplement.combined" value="true" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="Repository.Attach.JavaDocs" value="false" />
-    <property name="GenerateAntBuildDialog.generateSingleFile" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="MemberChooser.sorted" value="false" />
+    <property name="recentsLimit" value="5" />
+    <property name="GenerateAntBuildDialog.generateSingleFile" value="false" />
     <property name="GenerateAntBuildDialog.inclineRuntiemClasspath" value="false" />
-    <property name="GoToClass.includeJavaFiles" value="false" />
     <property name="GenerateAntBuildDialog.outputFileNameProperty" value="build" />
+    <property name="GoToClass.includeJavaFiles" value="false" />
     <property name="GenerateAntBuildDialog.enableUiFormCompile" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
@@ -345,8 +419,8 @@
     <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GenerateAntBuildDialog.backupFiles" value="true" />
-    <property name="dynamic.classpath" value="false" />
     <property name="options.searchVisible" value="true" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -782,16 +856,6 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/source/me/chenyi/mm/model/ModelUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="430" column="35" selection-start="13601" selection-end="13608" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/me/chenyi/mm/model/DatabaseUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="395" column="158" selection-start="15818" selection-end="15818" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/plugin/MenuTrigger_importsample.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="35" selection-start="0" selection-end="35" vertical-scroll-proportion="0.0" />
@@ -832,23 +896,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/document/devlog/201208.md">
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="16" selection-start="80" selection-end="80" vertical-scroll-proportion="-1.5056689">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/readme.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="33" selection-start="275" selection-end="275" vertical-scroll-proportion="0.15777777">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/source/me/chenyi/jython/ScriptTriggerType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="27" column="38" selection-start="607" selection-end="623" vertical-scroll-proportion="0.0" />
@@ -876,7 +923,47 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/source/me/chenyi/mm/ui/MovieDetailPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="113" column="111" selection-start="4020" selection-end="4020" vertical-scroll-proportion="0.15650173">
+        <state line="113" column="111" selection-start="4020" selection-end="4020" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/document/devlog/201208.md">
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="16" selection-start="80" selection-end="80" vertical-scroll-proportion="-0.77272725">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/document/help/Database.md">
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/document/design/design.md">
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="49" selection-start="504" selection-end="504" vertical-scroll-proportion="-21.636364">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/readme.md">
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="16" selection-start="657" selection-end="657" vertical-scroll-proportion="0.28817734">
           <folding />
         </state>
       </provider>
