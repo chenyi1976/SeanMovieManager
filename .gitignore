@@ -46,3 +46,8 @@ pip-log.txt
 
 # Jython Cache
 *.pkc
+
+#############
+## Intellij IDEA
+#############
+.idea/
