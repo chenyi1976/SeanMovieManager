@@ -6,7 +6,11 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5177189b-607e-4f09-a1c7-3c481130250c" name="Default" comment="" />
+    <list default="true" id="5177189b-607e-4f09-a1c7-3c481130250c" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/jython/cachedir/packages/packages.idx" afterPath="$PROJECT_DIR$/lib/jython/cachedir/packages/packages.idx" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="MMM.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -63,46 +67,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MenuTrigger_importsample.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/plugin/MenuTrigger_importsample.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="35" selection-start="0" selection-end="35" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="jython_rules.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/source/me/chenyi/jython/jython_rules.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="24" selection-start="389" selection-end="402" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ScriptLibrary.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/source/me/chenyi/jython/ScriptLibrary.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="182" selection-start="435" selection-end="435" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="MovieDetailPanel.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/source/me/chenyi/mm/ui/MovieDetailPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="96" column="162" selection-start="3443" selection-end="3443" vertical-scroll-proportion="0.65">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ScriptAction.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/source/me/chenyi/jython/action/ScriptAction.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="11" selection-start="441" selection-end="441" vertical-scroll-proportion="0.0">
+            <state line="113" column="111" selection-start="4020" selection-end="4020" vertical-scroll-proportion="0.15650173">
               <folding />
             </state>
           </provider>
@@ -160,13 +128,12 @@
       <setting name="OPEN_NEW_TAB" value="false" />
     </FindUsagesManager>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/source/me/chenyi/mm/model/ModelObject.java" />
-        <option value="$PROJECT_DIR$/source/me/chenyi/mm/model/Attribute.java" />
-        <option value="$PROJECT_DIR$/source/me/chenyi/mm/model/Node.java" />
-        <option value="$PROJECT_DIR$/source/me/chenyi/mm/model/NodeType.java" />
         <option value="$PROJECT_DIR$/source/me/chenyi/mm/model/ModelEventListener.java" />
         <option value="$PROJECT_DIR$/source/me/chenyi/mm/model/ModelUtils.java" />
         <option value="$PROJECT_DIR$/source/me/chenyi/mm/model/ModelEventProxy.java" />
@@ -179,6 +146,10 @@
         <option value="$PROJECT_DIR$/source/me/chenyi/mm/model/DatabaseUtil.java" />
         <option value="$PROJECT_DIR$/resources/plugin/ItemDetailButton_helloworld.py" />
         <option value="$PROJECT_DIR$/source/me/chenyi/mm/ui/MovieDetailPanel.java" />
+        <option value="$PROJECT_DIR$/readme.md" />
+        <option value="$PROJECT_DIR$/devlog/201208.md" />
+        <option value="$PROJECT_DIR$/devlog/201209.md" />
+        <option value="$PROJECT_DIR$/devlog/201210.md" />
       </list>
     </option>
   </component>
@@ -210,7 +181,7 @@
       </profile-state>
     </entry>
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
     <OptionsSetting value="true" id="Checkout" />
@@ -250,7 +221,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="MovieManager" />
+              <option name="myItemId" value="SeanMovieManager" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -260,87 +231,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="MovieManager" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="source" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SMM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MovieManager" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="source" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="chenyi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SMM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MovieManager" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="source" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="chenyi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SMM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MovieManager" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="source" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="chenyi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SMM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MovieManager" />
+              <option name="myItemId" value="SeanMovieManager" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -354,15 +245,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="MovieManager" />
+              <option name="myItemId" value="SeanMovieManager" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="posters" />
+              <option name="myItemId" value="document" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -372,15 +259,33 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="MovieManager" />
+              <option name="myItemId" value="SeanMovieManager" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
+              <option name="myItemId" value="document" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="plugin" />
+              <option name="myItemId" value="help" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SMM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SeanMovieManager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="document" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="devlog" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -435,7 +340,7 @@
     <property name="Downloaded.Files.Path" value="$PROJECT_DIR$/lib" />
     <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/source/com/moviejukebox/themoviedb" />
-    <property name="options.lastSelected" value="fileTemplates" />
+    <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
     <property name="project.structure.side.proportion" value="0.23803009" />
     <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
     <property name="MemberChooser.copyJavadoc" value="false" />
@@ -457,6 +362,11 @@
     </key>
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="com.moviejukebox.themoviedb" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\dev\myproj\MMM\SeanMovieManager\document" />
+      <recent name="D:\dev\myproj\MMM\SeanMovieManager\document\help" />
+      <recent name="D:\dev\myproj\MMM\SeanMovieManager\document\devlog" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.moviejukebox.themoviedb" />
@@ -704,13 +614,13 @@
       <method />
     </configuration>
     <list size="7">
-      <item index="0" class="java.lang.String" itemvalue="Application.MovieManager" />
-      <item index="1" class="java.lang.String" itemvalue="Application.JFlow" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.ServiceUtiltiesTest.testAddMovieInfoToDatabase" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.MovieMainPanelTest.testMovieAddPanel" />
-      <item index="4" class="java.lang.String" itemvalue="Application.MovieMainPanelTest" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.JFlowPanelTest.testDiv" />
-      <item index="6" class="java.lang.String" itemvalue="Application.JFlowPanelTest" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.ServiceUtiltiesTest.testAddMovieInfoToDatabase" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.MovieMainPanelTest.testMovieAddPanel" />
+      <item index="2" class="java.lang.String" itemvalue="Application.MovieMainPanelTest" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.JFlowPanelTest.testDiv" />
+      <item index="4" class="java.lang.String" itemvalue="Application.JFlowPanelTest" />
+      <item index="5" class="java.lang.String" itemvalue="Application.MovieManager" />
+      <item index="6" class="java.lang.String" itemvalue="Application.JFlow" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
@@ -748,6 +658,11 @@
       <created>1344831742661</created>
       <updated>1344831742661</updated>
     </task>
+    <task id="LOCAL-00001" summary="document update">
+      <created>1351554236847</created>
+      <updated>1351554236847</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -777,22 +692,22 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32254463" sideWeight="0.41956174" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24959914" sideWeight="0.7410714" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.45424107" sideWeight="0.73568016" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.453125" sideWeight="0.73568016" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39200997" sideWeight="0.5104222" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20089285" sideWeight="0.43185464" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924107" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16194548" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19828968" sideWeight="0.5457589" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19828968" sideWeight="0.546875" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3872768" sideWeight="0.48583645" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32254463" sideWeight="0.41956174" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Script Monkey" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20089285" sideWeight="0.43185464" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JProfiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12773918" sideWeight="0.67745537" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39955357" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -835,7 +750,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" />
+    <option name="LAST_COMMIT_MESSAGE" value="document update" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -848,6 +763,7 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
+    <MESSAGE value="document update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -866,112 +782,101 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/posters/p1.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/me/chenyi/mm/flow/MovieFlowModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="88" column="34" selection-start="2254" selection-end="2254" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/me/chenyi/mm/model/NodeUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="40" selection-start="305" selection-end="309" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/me/chenyi/mm/service/ServiceUtilities.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="13" selection-start="626" selection-end="626" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/source/me/chenyi/mm/model/ModelUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="430" column="35" selection-start="13601" selection-end="13608" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="430" column="35" selection-start="13601" selection-end="13608" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/source/me/chenyi/mm/model/DatabaseUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="395" column="158" selection-start="15818" selection-end="15818" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="395" column="158" selection-start="15818" selection-end="15818" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/plugin/MenuTrigger_importsample.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="35" selection-start="0" selection-end="35" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/source/me/chenyi/jython/jython_rules.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="24" selection-start="389" selection-end="402" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="18" column="24" selection-start="389" selection-end="402" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/source/me/chenyi/jython/ScriptLibrary.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="182" selection-start="435" selection-end="435" vertical-scroll-proportion="0.0">
+        <state line="20" column="182" selection-start="435" selection-end="435" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/me/chenyi/jython/action/ScriptAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="11" selection-start="441" selection-end="441" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/document/devlog/201210.md">
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="39" selection-start="519" selection-end="519" vertical-scroll-proportion="0.31026253">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/source/me/chenyi/mm/MovieManagerFrame.java">
+    <entry file="file://$PROJECT_DIR$/document/devlog/201209.md">
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state line="94" column="81" selection-start="2769" selection-end="2769" vertical-scroll-proportion="0.0">
+        <state line="94" column="0" selection-start="1152" selection-end="1152" vertical-scroll-proportion="0.9188544">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/document/devlog/201208.md">
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="16" selection-start="80" selection-end="80" vertical-scroll-proportion="-1.5056689">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/readme.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="33" selection-start="275" selection-end="275" vertical-scroll-proportion="0.15777777">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/source/me/chenyi/jython/ScriptTriggerType.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="38" selection-start="607" selection-end="623" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/plugin/MenuTrigger_importsample.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="35" selection-start="0" selection-end="35" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="27" column="38" selection-start="607" selection-end="623" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/plugin/ItemDetailButton_helloworld.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="56" selection-end="56" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/plugin/onappstart_helloworld.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="2" column="0" selection-start="56" selection-end="56" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/plugin/onappexit_helloworld.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/source/me/chenyi/jython/action/ScriptAction.java">
+    <entry file="file://$PROJECT_DIR$/resources/plugin/onappstart_helloworld.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="11" selection-start="441" selection-end="441" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/me/chenyi/mm/MovieManagerFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="94" column="81" selection-start="2769" selection-end="2769" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/source/me/chenyi/mm/ui/MovieDetailPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="96" column="162" selection-start="3443" selection-end="3443" vertical-scroll-proportion="0.65">
+        <state line="113" column="111" selection-start="4020" selection-end="4020" vertical-scroll-proportion="0.15650173">
           <folding />
         </state>
       </provider>
