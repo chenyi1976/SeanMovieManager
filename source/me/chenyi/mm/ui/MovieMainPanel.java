@@ -9,6 +9,7 @@ import be.pwnt.jflow.*;
 import be.pwnt.jflow.Shape;
 import be.pwnt.jflow.event.ShapeEvent;
 import be.pwnt.jflow.event.ShapeListener;
+import me.chenyi.jython.ScriptEnvironment;
 import me.chenyi.mm.flow.MovieFlowConfiguration;
 import me.chenyi.mm.flow.MovieFlowModel;
 import me.chenyi.mm.flow.NodePicture;
@@ -65,6 +66,7 @@ public class MovieMainPanel extends CurtainPagePanel
             {
                 detailPanel.setNode(node);
             }
+            ScriptEnvironment.getInstance().setCurrentMovieId(node.getId());
         }
     }
 
