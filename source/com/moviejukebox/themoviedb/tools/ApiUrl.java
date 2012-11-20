@@ -81,7 +81,7 @@ public class ApiUrl {
      * Create the full URL with the API.
      *
      * @param query
-     * @param tmdbId
+     * @param movieId
      * @param language
      * @param country
      * @param page
@@ -222,7 +222,7 @@ public class ApiUrl {
      * @param country
      * @return
      */
-    public URL getIdUrl(int movieId, String language, String country) {
+    public URL getIdUrl(long movieId, String language, String country) {
         return getIdUrl(String.valueOf(movieId), language, country);
     }
 
@@ -232,7 +232,7 @@ public class ApiUrl {
      * @param language
      * @return
      */
-    public URL getIdUrl(int movieId, String language) {
+    public URL getIdUrl(long movieId, String language) {
         return getIdUrl(String.valueOf(movieId), language, DEFAULT_STRING);
     }
 
@@ -241,7 +241,7 @@ public class ApiUrl {
      * @param movieId
      * @return
      */
-    public URL getIdUrl(int movieId) {
+    public URL getIdUrl(long movieId) {
         return getIdUrl(String.valueOf(movieId), DEFAULT_STRING, DEFAULT_STRING);
     }
 

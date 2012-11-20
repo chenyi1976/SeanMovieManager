@@ -247,7 +247,7 @@ public class TheMovieDb implements IMovieService
      * @throws MovieDbException
      */
     @Override
-    public MovieDb getMovieInfo(int movieId, String language) throws MovieDbException {
+    public MovieDb getMovieInfo(long movieId, String language) throws MovieDbException {
 
         URL url = tmdbMovieInfo.getIdUrl(movieId, language);
         String webPage = WebBrowser.request(url);
@@ -290,7 +290,7 @@ public class TheMovieDb implements IMovieService
      * @throws MovieDbException
      */
     @Override
-    public List<AlternativeTitle> getMovieAlternativeTitles(int movieId, String country) throws MovieDbException {
+    public List<AlternativeTitle> getMovieAlternativeTitles(long movieId, String country) throws MovieDbException {
 
         URL url = tmdbMovieAltTitles.getIdUrl(movieId, ApiUrl.DEFAULT_STRING, country);
         String webPage = WebBrowser.request(url);
@@ -313,7 +313,7 @@ public class TheMovieDb implements IMovieService
      * @throws MovieDbException
      */
     @Override
-    public List<Person> getMovieCasts(int movieId) throws MovieDbException {
+    public List<Person> getMovieCasts(long movieId) throws MovieDbException {
 
         List<Person> people = new ArrayList<Person>();
 
@@ -352,7 +352,7 @@ public class TheMovieDb implements IMovieService
      * @throws MovieDbException
      */
     @Override
-    public List<Artwork> getMovieImages(int movieId, String language) throws MovieDbException {
+    public List<Artwork> getMovieImages(long movieId, String language) throws MovieDbException {
 
         List<Artwork> artwork = new ArrayList<Artwork>();
         URL url = tmdbMovieImages.getIdUrl(movieId, language);
@@ -389,7 +389,7 @@ public class TheMovieDb implements IMovieService
      * @throws MovieDbException
      */
     @Override
-    public List<Keyword> getMovieKeywords(int movieId) throws MovieDbException {
+    public List<Keyword> getMovieKeywords(long movieId) throws MovieDbException {
 
         URL url = tmdbMovieKeywords.getIdUrl(movieId);
         String webPage = WebBrowser.request(url);
@@ -412,7 +412,7 @@ public class TheMovieDb implements IMovieService
      * @throws MovieDbException
      */
     @Override
-    public List<ReleaseInfo> getMovieReleaseInfo(int movieId, String language) throws MovieDbException {
+    public List<ReleaseInfo> getMovieReleaseInfo(long movieId, String language) throws MovieDbException {
 
         URL url = tmdbMovieReleaseInfo.getIdUrl(movieId);
         String webPage = WebBrowser.request(url);
@@ -437,7 +437,7 @@ public class TheMovieDb implements IMovieService
      * @throws MovieDbException
      */
     @Override
-    public List<Trailer> getMovieTrailers(int movieId, String language) throws MovieDbException {
+    public List<Trailer> getMovieTrailers(long movieId, String language) throws MovieDbException {
 
         List<Trailer> trailers = new ArrayList<Trailer>();
         URL url = tmdbMovieTrailers.getIdUrl(movieId, language);
@@ -471,7 +471,7 @@ public class TheMovieDb implements IMovieService
      * @throws MovieDbException
      */
     @Override
-    public List<Translation> getMovieTranslations(int movieId) throws MovieDbException {
+    public List<Translation> getMovieTranslations(long movieId) throws MovieDbException {
 
         URL url = tmdbMovieTranslations.getIdUrl(movieId);
         String webPage = WebBrowser.request(url);
@@ -496,7 +496,7 @@ public class TheMovieDb implements IMovieService
      * @throws MovieDbException
      */
     @Override
-    public CollectionInfo getCollectionInfo(int movieId, String language) throws MovieDbException {
+    public CollectionInfo getCollectionInfo(long movieId, String language) throws MovieDbException {
 
         URL url = tmdbCollectionInfo.getIdUrl(movieId);
         String webPage = WebBrowser.request(url);

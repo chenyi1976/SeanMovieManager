@@ -159,7 +159,7 @@ public class ServiceUtilities
         }
     }
 
-    public static void addMovieInfoToDatabase(int movieId, boolean update)
+    public static void addMovieInfoToDatabase(long movieId, boolean update)
     {
         MovieDb movieDb = null;
         try
@@ -184,7 +184,7 @@ public class ServiceUtilities
             connection = DatabaseUtil.openConnection();
 
             String movieTitle = movieDb.getTitle();
-            int tmdbId = movieDb.getId();
+            long tmdbId = movieDb.getId();
 
             Map<Attribute, Object> valueMap = new HashMap();
 
@@ -258,7 +258,7 @@ public class ServiceUtilities
                 movieDb = movieService.getMovieInfo(movieDb.getId(), "");
 
                 String movieTitle = movieDb.getTitle();
-                int tmdbId = movieDb.getId();
+                long tmdbId = movieDb.getId();
 
                 Map<Attribute, Object> valueMap = new HashMap();
 

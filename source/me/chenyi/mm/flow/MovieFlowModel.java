@@ -24,7 +24,7 @@ public class MovieFlowModel extends AbstractListModel implements FlowModel
 
     private NodeType nodeType;
     private NodePicture defaultShape;
-    private List<Integer> nodeIds = Collections.emptyList();
+    private List<Long> nodeIds = Collections.emptyList();
     private Map<Integer, NodePicture> shapeMap = new HashMap();//Index - > NodePicture
 
     private EventAdapter ea;
@@ -39,7 +39,7 @@ public class MovieFlowModel extends AbstractListModel implements FlowModel
             defaultShape = new NodePicture(getClass().getResource("/posters/p1.jpg"), null);
 
             connection = DatabaseUtil.openConnection();
-            nodeIds = (List<Integer>)ModelUtils.getAllMovieIds(connection);
+            nodeIds = (List<Long>)ModelUtils.getAllMovieIds(connection);
             nodeType = ModelUtils.getNodeType(connection, NodeType.TYPE_MOVIE);
 
             ModelEventProxy.getInstance().addModelEventListener(ea);
@@ -74,7 +74,7 @@ public class MovieFlowModel extends AbstractListModel implements FlowModel
         while(index >= nodeIds.size())
             index -= nodeIds.size();
 
-        Integer nodeId = nodeIds.get(index);
+        long nodeId = nodeIds.get(index);
 
         NodePicture shape = shapeMap.get(index);
         if(shape != null)
@@ -149,7 +149,7 @@ public class MovieFlowModel extends AbstractListModel implements FlowModel
         }
     }
 
-    public boolean removeShapeByNodeId(Integer nodeId)
+    public boolean removeShapeByNodeId(long nodeId)
     {
         int index = nodeIds.indexOf(nodeId);
         boolean rv = nodeIds.remove(nodeId);
@@ -173,7 +173,7 @@ public class MovieFlowModel extends AbstractListModel implements FlowModel
         return true;
     }
 
-    public boolean addNodeId(Integer nodeId)
+    public boolean addNodeId(long nodeId)
     {
         nodeIds.add(nodeId);
         int lastIndex = nodeIds.size() - 1;
@@ -181,7 +181,7 @@ public class MovieFlowModel extends AbstractListModel implements FlowModel
         return true;
     }
 
-    public boolean addNodeIdAt(int index, Integer nodeId)
+    public boolean addNodeIdAt(int index, long nodeId)
     {
         if(index < 0 || index >= nodeIds.size())
             return false;
@@ -201,7 +201,7 @@ public class MovieFlowModel extends AbstractListModel implements FlowModel
         return true;
     }
 
-    public boolean updateNodeId(int nodeId)
+    public boolean updateNodeId(long nodeId)
     {
         int index = nodeIds.indexOf(nodeId);
 
@@ -213,7 +213,7 @@ public class MovieFlowModel extends AbstractListModel implements FlowModel
         return true;
     }
 
-    public boolean updateNodeIdAt(int index, Integer nodeId)
+    public boolean updateNodeIdAt(int index, long nodeId)
     {
         if(index < 0 || index >= nodeIds.size())
             return false;

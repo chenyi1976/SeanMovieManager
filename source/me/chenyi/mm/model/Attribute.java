@@ -8,18 +8,18 @@ package me.chenyi.mm.model;
  */
 public class Attribute extends ModelObject
 {
-    private int id;
+    private long id;
     private String name;
     private AttributeType type;
 
-    public Attribute(int id, String name, AttributeType type)
+    public Attribute(long id, String name, AttributeType type)
     {
         this.id = id;
         this.name = name;
         this.type = type;
     }
 
-    public int getId()
+    public long getId()
     {
         return id;
     }

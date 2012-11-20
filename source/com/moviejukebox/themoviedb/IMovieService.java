@@ -40,7 +40,7 @@ public interface IMovieService
      * @return
      * @throws com.moviejukebox.themoviedb.MovieDbException
      */
-    MovieDb getMovieInfo(int movieId, String language) throws MovieDbException;
+    MovieDb getMovieInfo(long movieId, String language) throws MovieDbException;
 
     /**
      * This method is used to retrieve all of the alternative titles we have for a particular movie.
@@ -50,7 +50,7 @@ public interface IMovieService
      * @return
      * @throws com.moviejukebox.themoviedb.MovieDbException
      */
-    List<AlternativeTitle> getMovieAlternativeTitles(int movieId, String country) throws MovieDbException;
+    List<AlternativeTitle> getMovieAlternativeTitles(long movieId, String country) throws MovieDbException;
 
     /**
      * This method is used to retrieve all of the movie cast information.
@@ -61,7 +61,7 @@ public interface IMovieService
      * @return
      * @throws com.moviejukebox.themoviedb.MovieDbException
      */
-    List<Person> getMovieCasts(int movieId) throws MovieDbException;
+    List<Person> getMovieCasts(long movieId) throws MovieDbException;
 
     /**
      * This method should be used when you’re wanting to retrieve all of the images for a particular movie.
@@ -71,7 +71,7 @@ public interface IMovieService
      * @return
      * @throws com.moviejukebox.themoviedb.MovieDbException
      */
-    List<Artwork> getMovieImages(int movieId, String language) throws MovieDbException;
+    List<Artwork> getMovieImages(long movieId, String language) throws MovieDbException;
 
     /**
      * This method is used to retrieve all of the keywords that have been added to a particular movie.
@@ -82,7 +82,7 @@ public interface IMovieService
      * @return
      * @throws com.moviejukebox.themoviedb.MovieDbException
      */
-    List<Keyword> getMovieKeywords(int movieId) throws MovieDbException;
+    List<Keyword> getMovieKeywords(long movieId) throws MovieDbException;
 
     /**
      * This method is used to retrieve all of the release and certification data we have for a specific movie.
@@ -92,7 +92,7 @@ public interface IMovieService
      * @return
      * @throws com.moviejukebox.themoviedb.MovieDbException
      */
-    List<ReleaseInfo> getMovieReleaseInfo(int movieId, String language) throws MovieDbException;
+    List<ReleaseInfo> getMovieReleaseInfo(long movieId, String language) throws MovieDbException;
 
     /**
      * This method is used to retrieve all of the trailers for a particular movie.
@@ -104,7 +104,7 @@ public interface IMovieService
      * @return
      * @throws com.moviejukebox.themoviedb.MovieDbException
      */
-    List<Trailer> getMovieTrailers(int movieId, String language) throws MovieDbException;
+    List<Trailer> getMovieTrailers(long movieId, String language) throws MovieDbException;
 
     /**
      * This method is used to retrieve a list of the available translations for a specific movie.
@@ -113,7 +113,7 @@ public interface IMovieService
      * @return
      * @throws com.moviejukebox.themoviedb.MovieDbException
      */
-    List<Translation> getMovieTranslations(int movieId) throws MovieDbException;
+    List<Translation> getMovieTranslations(long movieId) throws MovieDbException;
 
     /**
      * This method is used to retrieve all of the basic information about a movie collection.
@@ -125,7 +125,7 @@ public interface IMovieService
      * @return
      * @throws com.moviejukebox.themoviedb.MovieDbException
      */
-    CollectionInfo getCollectionInfo(int movieId, String language) throws MovieDbException;
+    CollectionInfo getCollectionInfo(long movieId, String language) throws MovieDbException;
 
     /**
      * Get the configuration information

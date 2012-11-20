@@ -61,7 +61,7 @@ public class ServiceUtiltiesTest {
     public void testAddMovieInfoToDatabase() throws Exception {
 
 //        String movieTitle = "Men in Black 2";
-        int movieId = 11;
+        long movieId = 11;
         ServiceUtilities.addMovieInfoToDatabase(movieId, true);
         Node node = ModelUtils.searchMovieByTmdbId(movieId);
         System.out.println("node = " + node);

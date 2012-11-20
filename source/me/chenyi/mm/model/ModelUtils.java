@@ -17,16 +17,16 @@ import org.apache.commons.collections.map.HashedMap;
  */
 public class ModelUtils {
 
-    private static Map<Integer, Attribute> attrCacheById = new HashMap();
+    private static Map<Long, Attribute> attrCacheById = new HashMap();
     private static Map<String, Attribute> attrCacheByName = new HashMap();
 
-    private static Map<Integer, NodeType> nodeTypeCacheById = new HashedMap();
+    private static Map<Long, NodeType> nodeTypeCacheById = new HashedMap();
     private static Map<String, NodeType> nodeTypeCacheByName = new HashedMap();
 
-    private static Map<Integer, Node> nodeCacheById = new HashMap<Integer, Node>();
+    private static Map<Long, Node> nodeCacheById = new HashMap<Long, Node>();
     private static Map<String, Node> nodeCacheByTitle = new HashMap<String, Node>();
     
-    private static Map<NodeType, Collection<Integer>> nodeIdCacheByType = new HashedMap();
+    private static Map<NodeType, Collection<Long>> nodeIdCacheByType = new HashedMap();
 
     private static ModelEventProxy eventProxy = ModelEventProxy.getInstance();
 
@@ -68,7 +68,7 @@ public class ModelUtils {
         return Collections.emptyList();
     }
 
-    public static Attribute getAttribute(Connection connection, int attrId)
+    public static Attribute getAttribute(Connection connection, long attrId)
     {
         if (attrCacheByName.isEmpty())
             getAllAttributes(connection);
@@ -76,7 +76,7 @@ public class ModelUtils {
         return attrCacheByName.get(attrId);
     }
 
-    public static Attribute getAttribute(int attrId)
+    public static Attribute getAttribute(long attrId)
     {
         if (attrCacheById.isEmpty())
             getAllAttributes();
@@ -264,14 +264,14 @@ public class ModelUtils {
         return nodeTypeCacheByName.get(nodeTypeName);
     }
 
-    public static Collection<Integer> getAllNodeIds(Connection connection, NodeType nodeType)
+    public static Collection<Long> getAllNodeIds(Connection connection, NodeType nodeType)
     {
         try {
-            Collection<Integer> nodes = nodeIdCacheByType.get(nodeType);
+            Collection<Long> nodes = nodeIdCacheByType.get(nodeType);
             if (nodes != null)
                 return nodes;
 
-            Collection<Integer> allNodes = DatabaseUtil.getALlNodeIds(connection, nodeType);
+            Collection<Long> allNodes = DatabaseUtil.getALlNodeIds(connection, nodeType);
             nodeIdCacheByType.put(nodeType, allNodes);
             return allNodes;
         } catch (Exception e) {
@@ -280,15 +280,15 @@ public class ModelUtils {
         return null;
     }
 
-    public static Collection<Integer> getAllNodeIds(NodeType nodeType)
+    public static Collection<Long> getAllNodeIds(NodeType nodeType)
     {
         try {
-            Collection<Integer> nodes = nodeIdCacheByType.get(nodeType);
+            Collection<Long> nodes = nodeIdCacheByType.get(nodeType);
             if (nodes != null)
                 return nodes;
 
             Connection connection = DatabaseUtil.openConnection();
-            Collection<Integer> allNodes = DatabaseUtil.getALlNodeIds(connection, nodeType);
+            Collection<Long> allNodes = DatabaseUtil.getALlNodeIds(connection, nodeType);
             DatabaseUtil.closeConnection(connection);
             nodeIdCacheByType.put(nodeType, allNodes);
             return allNodes;
@@ -298,15 +298,15 @@ public class ModelUtils {
         return null;
     }
 
-    public static Collection<Integer> getAllMovieIds(Connection connection)
+    public static Collection<Long> getAllMovieIds(Connection connection)
     {
         try {
             NodeType nodeType = getNodeType(NodeType.TYPE_MOVIE);
-            Collection<Integer> nodes = nodeIdCacheByType.get(nodeType);
+            Collection<Long> nodes = nodeIdCacheByType.get(nodeType);
             if (nodes != null)
                 return nodes;
 
-            Collection<Integer> allNodes = DatabaseUtil.getALlNodeIds(connection, nodeType);
+            Collection<Long> allNodes = DatabaseUtil.getALlNodeIds(connection, nodeType);
             nodeIdCacheByType.put(nodeType, allNodes);
             return allNodes;
         } catch (Exception e) {
@@ -315,11 +315,11 @@ public class ModelUtils {
         return null;
     }
 
-    public static Collection<Integer> getAllMovieIds()
+    public static Collection<Long> getAllMovieIds()
     {
         try {
             Connection connection = DatabaseUtil.openConnection();
-            Collection<Integer> allNodes = getAllMovieIds(connection);
+            Collection<Long> allNodes = getAllMovieIds(connection);
             DatabaseUtil.closeConnection(connection);
             return allNodes;
         } catch (Exception e) {
@@ -388,7 +388,7 @@ public class ModelUtils {
         return null;
     }
 
-    public static Node searchMovieByTmdbId(Connection connection, Integer tmdbId)
+    public static Node searchMovieByTmdbId(Connection connection, Long tmdbId)
     {
         try {
             NodeType movieType = getNodeType(connection, NodeType.TYPE_MOVIE);
@@ -408,7 +408,7 @@ public class ModelUtils {
         return null;
     }
 
-    public static Node searchMovieByTmdbId(Integer tmdbId)
+    public static Node searchMovieByTmdbId(Long tmdbId)
     {
         try {
             Connection connection = DatabaseUtil.openConnection();
@@ -421,7 +421,7 @@ public class ModelUtils {
         return null;
     }
 
-    public static Node getNode(Connection connection, NodeType nodeType, Integer nodeId)
+    public static Node getNode(Connection connection, NodeType nodeType, long nodeId)
     {
         try {
             Node node = nodeCacheById.get(nodeId);
@@ -437,7 +437,7 @@ public class ModelUtils {
         return null;
     }
 
-    public static Node getNode(NodeType nodeType, Integer nodeId)
+    public static Node getNode(NodeType nodeType, Long nodeId)
     {
         try {
             Connection connection = DatabaseUtil.openConnection();
@@ -450,13 +450,13 @@ public class ModelUtils {
         return null;
     }
 
-    public static Node getMovie(Connection connection, Integer nodeId)
+    public static Node getMovie(Connection connection, long nodeId)
     {
         NodeType movieType = getNodeType(connection, NodeType.TYPE_MOVIE);
         return getNode(connection, movieType, nodeId);
     }
 
-    public static Node getMovie(Integer nodeId)
+    public static Node getMovie(long nodeId)
     {
         try {
             Connection connection = DatabaseUtil.openConnection();
@@ -500,7 +500,7 @@ public class ModelUtils {
         return null;
     }
 
-    public static Node updateMovie(Connection connection, int nodeId, Map<Attribute, Object> valueMap)
+    public static Node updateMovie(Connection connection, long nodeId, Map<Attribute, Object> valueMap)
     {
         try
         {

@@ -6,11 +6,11 @@ from me.chenyi.jython import ScriptLibrary
 
 scriptLibrary = ScriptLibrary.getInstance()
 
-def getCurrentItemId():
-    return scriptLibrary.getCurrentItemId()
+def getCurrentMovieId():
+    return scriptLibrary.getCurrentMovieId()
 
-def setCurrentItemId(id):
-    return scriptLibrary.setCurrentItemId(id)
+def setCurrentMovieId(id):
+    return scriptLibrary.setCurrentMovieId(id)
 
 def addMovie(movieName):
     return scriptLibrary.addMovie(movieName)
@@ -26,3 +26,9 @@ def updateMovie(movieId):
 
 def getMovieCount():
     return scriptLibrary.getMovieCount()
+
+def getAttributeValue(itemId, attributeName):
+    return scriptLibrary.getAttributeValue(itemId, attributeName)
+
+def getAttributeName(attributeId):
+    return scriptLibrary.getAttributeName(attributeId)

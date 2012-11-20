@@ -7,18 +7,18 @@ import java.util.Map;
 public class Node extends ModelObject
 {
 
-    private int id;
+    private long id;
     private NodeType nodeType;
     private Map<Attribute, Object> values;
 
-    public Node(int id, NodeType nodeType, Map<Attribute, Object> values)
+    public Node(long id, NodeType nodeType, Map<Attribute, Object> values)
     {
         this.id = id;
         this.nodeType = nodeType;
         this.values = values != null ? values : new HashMap();
     }
 
-    public int getId()
+    public long getId()
     {
         return id;
     }
@@ -39,7 +39,7 @@ public class Node extends ModelObject
         return values.get(attribute);
     }
 
-    public void addAttrValue(int attrId, Object value)
+    public void addAttrValue(long attrId, Object value)
     {
         Attribute attribute = ModelUtils.getAttribute(attrId);
         if(attribute != null)

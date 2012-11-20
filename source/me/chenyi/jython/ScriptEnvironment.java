@@ -10,7 +10,7 @@ public class ScriptEnvironment
 {
     private static ScriptEnvironment instance = null;
 
-    private long currentItemId = -1;
+    private long currentMovieId = -1;
 
     public static ScriptEnvironment getInstance()
     {
@@ -21,13 +21,13 @@ public class ScriptEnvironment
         return instance;
     }
 
-    public long getCurrentItemId()
+    public long getCurrentMovieId()
     {
-        return currentItemId;
+        return currentMovieId;
     }
 
-    public void setCurrentItemId(long currentItemId)
+    public void setCurrentMovieId(long currentMovieId)
     {
-        this.currentItemId = currentItemId;
+        this.currentMovieId = currentMovieId;
     }
 }

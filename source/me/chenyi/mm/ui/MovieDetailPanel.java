@@ -41,7 +41,6 @@ public class MovieDetailPanel extends AlphaPanel{
     public MovieDetailPanel() {
         super(new GridBagLayout());
 
-        setBackground(Color.black);
 
         GridBagConstraints gbc =
             new GridBagConstraints(0, 0, 1, 1, 0, 1, GridBagConstraints.NORTHWEST, GridBagConstraints.BOTH,

@@ -7,16 +7,16 @@ public class NodeType extends ModelObject
     public static String TYPE_PERSON = "person";
     public static String TYPE_COMPANY = "company";
 
-    int id;
+    long id;
     String name;
 
-    public NodeType(int id, String name)
+    public NodeType(long id, String name)
     {
         this.id = id;
         this.name = name;
     }
 
-    public int getId()
+    public long getId()
     {
         return id;
     }

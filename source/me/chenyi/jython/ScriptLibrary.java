@@ -1,6 +1,8 @@
 package me.chenyi.jython;
 
+import me.chenyi.mm.model.Attribute;
 import me.chenyi.mm.model.ModelUtils;
+import me.chenyi.mm.model.Node;
 import me.chenyi.mm.service.ServiceUtilities;
 
 /**
@@ -20,14 +22,30 @@ public class ScriptLibrary
         return instance;
     }
 
-    public long getCurrentItemId()
+    public long getCurrentMovieId()
     {
-        return ScriptEnvironment.getInstance().getCurrentItemId();
+        return ScriptEnvironment.getInstance().getCurrentMovieId();
     }
 
-    public void setCurrentItemId(long item)
+    public void setCurrentMovieId(long item)
     {
-        ScriptEnvironment.getInstance().setCurrentItemId(item);
+        ScriptEnvironment.getInstance().setCurrentMovieId(item);
+    }
+
+    public String getAttributeName(long attributeId)
+    {
+        Attribute attribute = ModelUtils.getAttribute(attributeId);
+        if (attribute == null)
+            return null;
+        return attribute.getName();
+    }
+
+    public Object getAttributeValue(long itemId, String attributeName)
+    {
+        Node movie = ModelUtils.getMovie(itemId);
+        if (movie == null)
+            return null;
+        return movie.getAttributeValue(attributeName);
     }
 
     public int getMovieCount()
@@ -50,7 +68,7 @@ public class ScriptLibrary
         ServiceUtilities.addMovieInfoToDatabase(name, maxCount, true);
     }
 
-    public void addMovie(int movieId)
+    public void addMovie(long movieId)
     {
         ServiceUtilities.addMovieInfoToDatabase(movieId, true);
     }
