@@ -6,6 +6,9 @@ import java.io.*;
 import java.net.URL;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 import me.chenyi.mm.MovieManager;
 import me.chenyi.mm.mediainfodll.MediaInfo;
@@ -641,5 +644,80 @@ public class SysUtil {
 	public static String colourToString(java.awt.Color c) {
 	    return Integer.toHexString(0xFF000000 | c.getRGB()).substring(2);
 	}
+
+    /**
+     * open the file with system associated application.
+     * @param file
+     * @throws IOException
+     */
+    public static void openFileWithSystem(File file)
+        throws IOException
+    {
+        if (isMac())
+        {
+            Runtime.getRuntime().exec(new String[] {"open", file.getAbsolutePath()});
+        }
+        else if (isWindows())
+        {
+            Runtime.getRuntime().exec(new String[] {"cmd.exe", "/C", file.getAbsolutePath()});
+        }
+    }
+
+    /**
+     * create a symbolic link for the given file.
+     * @param linkName this usually will be movie id
+     * @param fileList this will be video file list
+     * @return
+     */
+    public static Map<File, String> createSymbolicLink(long linkName, Collection<File> fileList)
+    {
+        Map<File, String> result = new HashMap<File, String>();
+        try
+        {
+            File configDir = getConfigDir();
+            File linkFile = new File(configDir, String.valueOf(linkName));
+
+            for(File file : fileList)
+            {
+                if(linkFile.exists())
+                {
+                    linkFile = new File(configDir, String.valueOf(linkName) + "_" + System.currentTimeMillis());
+                }
+                String linkPath = linkFile.getAbsolutePath();
+                if(isWindows7() || isWindowsVista())
+                {
+                    if(file.isDirectory())
+                    {
+                        Runtime.getRuntime().exec(
+                            new String[]{ "cmd.exe", "/C", "mklink.exe /d \"" + linkPath + "\" \"" + file.getAbsolutePath() + "\"" });
+                    }
+                    else
+                    {
+                        Runtime.getRuntime().exec(
+                            new String[]{ "cmd.exe", "/C", "mklink.exe \"" + linkPath + "\" \"" + file.getAbsolutePath() + "\"" });
+                    }
+                    //mklink /d linkName movie_folder_url
+                    //mklink linkName movie_file_url
+                    result.put(file, linkPath);
+                }
+                else if(isMac())
+                {
+                    Runtime.getRuntime().exec(
+                        new String[]{ "ln –s \"" + file.getAbsolutePath() + "\" \"" + linkPath + "\"" });
+                    //ln –s movie_file/folder_path linkName
+                    result.put(file, linkPath);
+                }
+                else
+                {
+                    result.put(file, null);
+                }
+            }
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        return result;
+    }
 
 }
