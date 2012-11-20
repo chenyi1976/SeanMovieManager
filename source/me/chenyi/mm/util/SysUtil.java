@@ -688,13 +688,19 @@ public class SysUtil {
                 {
                     if(file.isDirectory())
                     {
-                        Runtime.getRuntime().exec(
-                            new String[]{ "cmd.exe", "/C", "mklink.exe /d \"" + linkPath + "\" \"" + file.getAbsolutePath() + "\"" });
+                        Process process = Runtime.getRuntime().exec(
+                            new String[]{ "cmd.exe", "/C",
+                                "mklink /d \"" + linkPath + "\" \"" + file.getAbsolutePath() + "\"" });
+                        int retCode = process.waitFor();
+                        System.out.println("retCode = " + retCode);
                     }
                     else
                     {
-                        Runtime.getRuntime().exec(
-                            new String[]{ "cmd.exe", "/C", "mklink.exe \"" + linkPath + "\" \"" + file.getAbsolutePath() + "\"" });
+                        Process process = Runtime.getRuntime().exec(
+                            new String[]{ "cmd.exe", "/C",
+                                "mklink \"" + linkPath + "\" \"" + file.getAbsolutePath() + "\"" });
+                        int retCode = process.waitFor();
+                        System.out.println("retCode = " + retCode);
                     }
                     //mklink /d linkName movie_folder_url
                     //mklink linkName movie_file_url
