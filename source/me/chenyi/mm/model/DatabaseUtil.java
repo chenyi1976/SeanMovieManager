@@ -154,7 +154,7 @@ public class DatabaseUtil
         ResultSet resultSet = connection.prepareStatement(String.format("select * from attribute where name =  '%s') ", name)).executeQuery();
         if (resultSet.next())
         {
-            int attrId = resultSet.getInt(1);
+            long attrId = resultSet.getLong(1);
             int typeId = resultSet.getInt(3);
             resultSet.close();
             return new Attribute(attrId, name, Attribute.AttributeType.values()[typeId]);
@@ -273,6 +273,7 @@ public class DatabaseUtil
         List<String> messageList = new ArrayList<String>();
         try
         {
+            //todo: should only delete those attribute value in nodeValueMap.
             connection.prepareStatement(
                 String.format("delete from NodeAttrValue where nodeId = %s", nodeId)).executeUpdate();
         }
@@ -370,10 +371,28 @@ public class DatabaseUtil
     {
         return searchForNode(connection, nodeType, null);
     }
-    
+
     static Node getNode(Connection connection, NodeType nodeType, long nodeId)
+//    static Node getNode(Connection connection, long nodeId)
             throws Exception
     {
+        //look up in the db for the node type? or just pass it in?
+//        ResultSet resultSet = connection.prepareStatement(String.format(
+//            "select distinct a.id, a.type, v.value, n.nodeType, nt.name from NodeAttrValue v, Attribute a, Node n, NodeType nt where v.attrId = a.id and v.nodeId = %s and v.nodeId = n.id and n.nodeType = nt.id",
+//            nodeId)).executeQuery();
+//
+//        Node node = null;
+//        while (resultSet.next())
+//        {
+//            long attrId = resultSet.getLong(1);
+//            int attrType = resultSet.getInt(2);
+//            Object value = resultSet.getString(3);
+//            long nodeTypeId = resultSet.getLong(4);
+//            String nodeTypeName = resultSet.getString(5);
+//
+//            if (node == null)
+//                node = new Node(nodeId, new NodeType(nodeTypeId, nodeTypeName), new HashMap<Attribute, Object>());
+
         ResultSet resultSet = connection.prepareStatement(String.format("select a.id, a.type, v.value from NodeAttrValue v, Attribute a where v.attrId = a.id and v.nodeId = %s", nodeId)).executeQuery();
 
         Node node = new Node(nodeId, nodeType, new HashMap<Attribute, Object>());

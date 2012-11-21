@@ -10,6 +10,9 @@ import java.util.Map;
 
 import be.pwnt.jflow.Shape;
 import be.pwnt.jflow.model.FlowModel;
+import me.chenyi.jython.ScriptEnvironment;
+import me.chenyi.jython.ScriptTriggerType;
+import me.chenyi.jython.ScriptUtilities;
 import me.chenyi.mm.model.*;
 import me.chenyi.mm.service.ImageType;
 
@@ -241,6 +244,10 @@ public class MovieFlowModel extends AbstractListModel implements FlowModel
             if (node.getNodeType().getName().equals(NodeType.TYPE_MOVIE))
             {
                 addNodeId(node.getId());
+                long oldCurrentMovieId = ScriptEnvironment.getInstance().getCurrentMovieId();
+                ScriptEnvironment.getInstance().setCurrentMovieId(node.getId());
+                ScriptUtilities.executeScripts(ScriptTriggerType.OnMovieAdded);
+                ScriptEnvironment.getInstance().setCurrentMovieId(oldCurrentMovieId);
             }
         }
 
@@ -258,6 +265,10 @@ public class MovieFlowModel extends AbstractListModel implements FlowModel
             if (node.getNodeType().getName().equals(NodeType.TYPE_MOVIE))
             {
                 removeShapeByNodeId(node.getId());
+                long oldCurrentMovieId = ScriptEnvironment.getInstance().getCurrentMovieId();
+                ScriptEnvironment.getInstance().setCurrentMovieId(node.getId());
+                ScriptUtilities.executeScripts(ScriptTriggerType.OnMovieDeleted);
+                ScriptEnvironment.getInstance().setCurrentMovieId(oldCurrentMovieId);
             }
         }
 
@@ -275,6 +286,10 @@ public class MovieFlowModel extends AbstractListModel implements FlowModel
             if (node.getNodeType().getName().equals(NodeType.TYPE_MOVIE))
             {
                 updateNodeId(node.getId());
+                long oldCurrentMovieId = ScriptEnvironment.getInstance().getCurrentMovieId();
+                ScriptEnvironment.getInstance().setCurrentMovieId(node.getId());
+                ScriptUtilities.executeScripts(ScriptTriggerType.OnMovieUpdated);
+                ScriptEnvironment.getInstance().setCurrentMovieId(oldCurrentMovieId);
             }
         }
     }
