@@ -33,5 +33,8 @@ def getMovieCount():
 def getAttributeValue(itemId, attributeName):
     return scriptLibrary.getAttributeValue(itemId, attributeName)
 
+def setAttributeValue(itemId, attributeName, attributeValue):
+    return scriptLibrary.setAttributeValue(itemId, attributeName, attributeValue)
+
 def getAttributeName(attributeId):
     return scriptLibrary.getAttributeName(attributeId)

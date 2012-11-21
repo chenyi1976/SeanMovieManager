@@ -500,12 +500,29 @@ public class ModelUtils {
         return null;
     }
 
-    public static Node updateMovie(Connection connection, long nodeId, Map<Attribute, Object> valueMap)
+    public static Node updateNode(Connection connection, long nodeId, Map<Attribute, Object> valueMap)
     {
         try
         {
             NodeType movieType = getNodeType(connection, NodeType.TYPE_MOVIE);
             return DatabaseUtil.updateNode(connection, movieType, nodeId, valueMap);
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static Node updateNode(long nodeId, Map<Attribute, Object> valueMap)
+    {
+        try
+        {
+            Connection connection = DatabaseUtil.openConnection();
+            NodeType movieType = getNodeType(connection, NodeType.TYPE_MOVIE);
+            Node node = DatabaseUtil.updateNode(connection, movieType, nodeId, valueMap);
+            DatabaseUtil.closeConnection(connection);
+            return node;
         }
         catch(Exception e)
         {

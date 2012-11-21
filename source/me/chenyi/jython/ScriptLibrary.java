@@ -1,6 +1,11 @@
 package me.chenyi.jython;
 
+import java.sql.Connection;
+import java.util.HashMap;
+import java.util.Map;
+
 import me.chenyi.mm.model.Attribute;
+import me.chenyi.mm.model.DatabaseUtil;
 import me.chenyi.mm.model.ModelUtils;
 import me.chenyi.mm.model.Node;
 import me.chenyi.mm.service.ServiceUtilities;
@@ -46,6 +51,33 @@ public class ScriptLibrary
         if (movie == null)
             return null;
         return movie.getAttributeValue(attributeName);
+    }
+
+    public Object setAttributeValue(long itemId, String attributeName, Object value)
+    {
+        try
+        {
+            Map<Attribute, Object> valueMap = new HashMap();
+            Connection connection = DatabaseUtil.openConnection();
+
+            Attribute.AttributeType type = Attribute.AttributeType.String;
+            if(value instanceof Number)
+            {
+                type = Attribute.AttributeType.Number;
+            }
+            else
+                value = String.valueOf(value);
+            valueMap.put(ModelUtils.getOrAddAttribute(connection, attributeName, type), value);
+
+            Node node = ModelUtils.updateNode(connection, itemId, valueMap);
+            DatabaseUtil.closeConnection(connection);
+            return node;
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public int getMovieCount()

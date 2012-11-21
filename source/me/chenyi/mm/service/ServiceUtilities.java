@@ -212,7 +212,7 @@ public class ServiceUtilities
             if (node != null)
             {
                 if (update)
-                    ModelUtils.updateMovie(connection, movieId, valueMap);
+                    ModelUtils.updateNode(connection, movieId, valueMap);
                 else
                 {
                     logger.warning(String.format("Node already exist for id: %s, title: %s", movieId, movieTitle));
@@ -289,7 +289,7 @@ public class ServiceUtilities
                 {
                     if (update)
                     {
-                        ModelUtils.updateMovie(connection, tmdbId, valueMap);
+                        ModelUtils.updateNode(connection, tmdbId, valueMap);
                     }
                     else
                     {
