@@ -147,16 +147,28 @@ public class ScriptEditorFrame extends JFrame
             else if(e.getSource() == saveButton)
             {
                 if(selectedScript == null)
+                {
+                    JOptionPane.showMessageDialog(ScriptEditorFrame.this, "Please select the script to save.");
                     return;
+                }
                 String newName = nameTextField.getText().trim();
                 if(newName.length() == 0)
+                {
+                    JOptionPane.showMessageDialog(ScriptEditorFrame.this, "Please give a name for script.");
                     return;
+                }
                 String scriptContent = scriptTextArea.getText().trim();
                 if(scriptContent.length() == 0)
+                {
+                    JOptionPane.showMessageDialog(ScriptEditorFrame.this, "Please put some content for script.");
                     return;
+                }
                 Object item = typeComboBox.getSelectedItem();
                 if(!(item instanceof ScriptTriggerType))
+                {
+                    JOptionPane.showMessageDialog(ScriptEditorFrame.this, "Please choose a script trigger.");
                     return;
+                }
                 ScriptTriggerType type = (ScriptTriggerType)item;
                 boolean result = selectedScript.updateScript(type, newName, scriptContent);
                 JOptionPane.showMessageDialog(ScriptEditorFrame.this, result ? "Saved." : "Failed!");

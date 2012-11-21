@@ -1,7 +1,7 @@
 package me.chenyi.jython;
 
-import javax.swing.*;
 import java.io.File;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -56,30 +56,32 @@ public class ScriptUtilities
     }
 
     private static Map<ScriptTriggerType, Map<String, Script>> scriptMap = new HashMap();
+    private static boolean needReloadScript = true;
 
     public static void reloadScripts()
     {
-        scriptMap.clear();
+        needReloadScript = true;
     }
 
     public static Map<ScriptTriggerType, Map<String, Script>> getScripts()
     {
-        if (scriptMap.size() == 0)
+        if (needReloadScript)
             initScriptList();
         return scriptMap;
     }
 
     public static Map<String, Script> getScriptsByTriggerType(ScriptTriggerType triggerType)
     {
+        if (needReloadScript)
+            initScriptList();
         if (scriptMap.containsKey(triggerType))
             return scriptMap.get(triggerType);
-
-        initScriptList();
-        return scriptMap.get(triggerType);
+        return Collections.emptyMap();
     }
 
     private static void initScriptList()
     {
+        scriptMap.clear();
         for(ScriptTriggerType triggerType : ScriptTriggerType.values())
         {
             Map<String, Script> result = new HashMap();
@@ -110,5 +112,6 @@ public class ScriptUtilities
             }
             scriptMap.put(triggerType, result);
         }
+        needReloadScript = false;
     }
 }

@@ -26,6 +26,11 @@ public class Script
         this.triggerType = triggerType;
         this.name = name;
 
+        updateFileLocation(triggerType, name);
+    }
+
+    private void updateFileLocation(ScriptTriggerType triggerType, String name)
+    {
         String absolutePath = "";
         try
         {
@@ -89,6 +94,7 @@ public class Script
         {
             //if the file name changed, then delete the old file.
             new File(getScriptFileLocation()).delete();
+            updateFileLocation(type, name);
         }
 
         this.name = name;
