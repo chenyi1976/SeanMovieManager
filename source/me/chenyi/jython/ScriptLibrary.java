@@ -9,6 +9,7 @@ import me.chenyi.mm.model.DatabaseUtil;
 import me.chenyi.mm.model.ModelUtils;
 import me.chenyi.mm.model.Node;
 import me.chenyi.mm.service.ServiceUtilities;
+import me.chenyi.mm.util.SysUtil;
 
 /**
  * Class description goes here
@@ -103,6 +104,11 @@ public class ScriptLibrary
     public void addMovie(long movieId)
     {
         ServiceUtilities.addMovieInfoToDatabase(movieId, true);
+    }
+
+    public int openUrlInBrowser(String url)
+    {
+        return SysUtil.openUrlInBrowser(url);
     }
 
 }

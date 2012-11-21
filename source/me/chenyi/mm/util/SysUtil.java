@@ -645,6 +645,37 @@ public class SysUtil {
 	    return Integer.toHexString(0xFF000000 | c.getRGB()).substring(2);
 	}
 
+    public static int openUrlInBrowser(String url)
+    {
+        if(!java.awt.Desktop.isDesktopSupported())
+        {
+            System.err.println("Desktop is not supported (fatal)");
+            return 1;
+        }
+
+        java.awt.Desktop desktop = java.awt.Desktop.getDesktop();
+
+        if(!desktop.isSupported(java.awt.Desktop.Action.BROWSE))
+        {
+
+            System.err.println("Desktop doesn't support the browse action (fatal)");
+            return 1;
+        }
+
+        try
+        {
+
+            java.net.URI uri = new java.net.URI(url);
+            desktop.browse(uri);
+        }
+        catch(Exception e)
+        {
+            System.err.println(e.getMessage());
+            return 1;
+        }
+        return 0;
+    }
+
     /**
      * open the file with system associated application.
      * @param file

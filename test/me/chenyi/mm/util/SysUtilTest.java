@@ -22,6 +22,13 @@ public class SysUtilTest
     }
 
     @Test
+    public void testOpenUrl()
+        throws Exception
+    {
+        SysUtil.openUrlInBrowser("http://google.com");
+    }
+
+    @Test
     public void tesetCreateSymbolicLink()
         throws Exception
     {
@@ -36,7 +43,7 @@ public class SysUtilTest
     }
 
     @Test
-    public void tesetCreateSymbolicLinkWithDir()
+    public void testCreateSymbolicLinkWithDir()
         throws Exception
     {
 

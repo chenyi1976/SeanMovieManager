@@ -38,3 +38,6 @@ def setAttributeValue(itemId, attributeName, attributeValue):
 
 def getAttributeName(attributeId):
     return scriptLibrary.getAttributeName(attributeId)
+
+def openUrlInBrowser(url):
+    return scriptLibrary.openUrlInBrowser(url)
