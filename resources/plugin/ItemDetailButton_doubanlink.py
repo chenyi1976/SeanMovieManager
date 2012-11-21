@@ -3,9 +3,6 @@
 # NOT working, due to jython does not support ssl currently.
 ######################################################################
 
-#jython 2.5 does not support json, we use third party json implementation from http://jyson.xhaus.com/
-import com.xhaus.jyson.JysonCodec as json
-#import json
 import urllib2
 
 ATTRIBUTE_IMDB='imdb_id'
@@ -26,6 +23,6 @@ douban_url=data.get(JSON_ATTR_ALT)
 douban_id=data.get(JSON_ATTR_ID)
 print douban_id
 if douban_id.startswith(JSON_ID_PREFIX):
-    douban_id=douban_id(len(JSON_ID_PREFIX))
+    douban_id=douban_id[len(JSON_ID_PREFIX):]
 print douban_id
 #we need to add the douban_id to db here.

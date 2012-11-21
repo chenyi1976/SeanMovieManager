@@ -1,3 +1,6 @@
+#jython 2.5 does not support json, we use third party json implementation from http://jyson.xhaus.com/
+import com.xhaus.jyson.JysonCodec as json
+
 import sys
 
 #sys.add_package('me.chenyi.jython')
