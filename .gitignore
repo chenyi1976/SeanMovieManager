@@ -46,6 +46,7 @@ pip-log.txt
 
 # Jython Cache
 *.pkc
+lib/jython/cachedir/
 
 #############
 ## Intellij IDEA
