@@ -52,3 +52,4 @@ lib/jython/cachedir/
 ## Intellij IDEA
 #############
 .idea/
+output/
