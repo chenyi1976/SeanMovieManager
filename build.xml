@@ -111,7 +111,116 @@
   
   <!-- Modules -->
   
-  <import file="${basedir}/module_smm.xml"/>
+  
+  <!-- Module SMM -->
+  
+  <dirname property="module.smm.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.smm" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.smm" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.smm" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.smm" value="${compiler.args}"/>
+  
+  <property name="smm.output.dir" value="${basedir}/output/classes/production/SMM"/>
+  <property name="smm.testoutput.dir" value="${basedir}/output/classes/test/SMM"/>
+  
+  <path id="smm.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="smm.module.production.classpath">
+    <path refid="${module.jdk.classpath.smm}"/>
+    <path refid="library.lib.classpath"/>
+  </path>
+  
+  <path id="smm.runtime.production.module.classpath">
+    <pathelement location="${smm.output.dir}"/>
+    <path refid="library.lib.classpath"/>
+  </path>
+  
+  <path id="smm.module.classpath">
+    <path refid="${module.jdk.classpath.smm}"/>
+    <pathelement location="${smm.output.dir}"/>
+    <path refid="library.lib.classpath"/>
+  </path>
+  
+  <path id="smm.runtime.module.classpath">
+    <pathelement location="${smm.testoutput.dir}"/>
+    <pathelement location="${smm.output.dir}"/>
+    <path refid="library.lib.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.smm">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.smm">
+    <patternset refid="excluded.from.module.smm"/>
+  </patternset>
+  
+  <path id="smm.module.sourcepath">
+    <dirset dir="${module.smm.basedir}">
+      <include name="source"/>
+      <include name="resources"/>
+    </dirset>
+  </path>
+  
+  <path id="smm.module.test.sourcepath">
+    <dirset dir="${module.smm.basedir}">
+      <include name="test"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.smm" depends="compile.module.smm.production,compile.module.smm.tests" description="Compile module SMM"/>
+  
+  <target name="compile.module.smm.production" description="Compile module SMM; production classes">
+    <mkdir dir="${smm.output.dir}"/>
+    <javac destdir="${smm.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.smm}/javac">
+      <compilerarg line="${compiler.args.smm}"/>
+      <bootclasspath refid="smm.module.bootclasspath"/>
+      <classpath refid="smm.module.production.classpath"/>
+      <src refid="smm.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.smm"/>
+    </javac>
+    
+    <copy todir="${smm.output.dir}">
+      <fileset dir="${module.smm.basedir}/source">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.smm.basedir}/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.smm.tests" depends="compile.module.smm.production" description="compile module SMM; test classes" unless="skip.tests">
+    <mkdir dir="${smm.testoutput.dir}"/>
+    <javac destdir="${smm.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.smm}/javac">
+      <compilerarg line="${compiler.args.smm}"/>
+      <bootclasspath refid="smm.module.bootclasspath"/>
+      <classpath refid="smm.module.classpath"/>
+      <src refid="smm.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.smm"/>
+    </javac>
+    
+    <copy todir="${smm.testoutput.dir}">
+      <fileset dir="${module.smm.basedir}/test">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.smm" description="cleanup module">
+    <delete dir="${smm.output.dir}"/>
+    <delete dir="${smm.testoutput.dir}"/>
+  </target>
   
   <target name="init" description="Build initialization">
     <!-- Perform any build initialization in this target -->
@@ -120,12 +229,13 @@
   <target name="clean" depends="clean.module.smm, clean.artifact.smm:jar" description="cleanup all"/>
   
   <target name="build.modules" depends="init, clean, compile.module.smm" description="build all modules"/>
-  
+
+  <property name="artifacts.temp.dir" value="${basedir}/output/temp"/>
+  <property name="artifact.output.smm:jar" value="${basedir}/output/artifact"/>
+  <property name="temp.jar.path.SMM.jar" value="${artifacts.temp.dir}/SMM.jar"/>
+
   <target name="init.artifacts">
-    <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
-    <property name="artifact.output.smm:jar" value="C:/Users/seanc/Temp/artifacts/SMM_jar"/>
     <mkdir dir="${artifacts.temp.dir}"/>
-    <property name="temp.jar.path.SMM.jar" value="${artifacts.temp.dir}/SMM.jar"/>
   </target>
   
   <target name="clean.artifact.smm:jar" description="clean SMM:jar artifact output">
@@ -139,61 +249,78 @@
       <zipfileset dir="${smm.output.dir}"/>
     </jar>
     <copy file="${temp.jar.path.SMM.jar}" tofile="${artifact.output.smm:jar}/SMM.jar"/>
-    <copy file="${basedir}/lib/commons-logging-1.1.1.jar" tofile="${artifact.output.smm:jar}/commons-logging-1.1.1.jar"/>
-    <copy file="${basedir}/lib/xerces.jar" tofile="${artifact.output.smm:jar}/xerces.jar"/>
-    <copy file="${basedir}/lib/commons-codec-1.3.jar" tofile="${artifact.output.smm:jar}/commons-codec-1.3.jar"/>
-    <copy file="${basedir}/lib/log4j-1.2.15.jar" tofile="${artifact.output.smm:jar}/log4j-1.2.15.jar"/>
-    <copy file="${basedir}/lib/commons-collections-3.2.1.jar" tofile="${artifact.output.smm:jar}/commons-collections-3.2.1.jar"/>
-    <copy file="${basedir}/lib/xml-apis.jar" tofile="${artifact.output.smm:jar}/xml-apis.jar"/>
-    <copy file="${basedir}/lib/commons-digester-2.0.jar" tofile="${artifact.output.smm:jar}/commons-digester-2.0.jar"/>
     <copy file="${basedir}/lib/ant-contrib-0.6.jar" tofile="${artifact.output.smm:jar}/ant-contrib-0.6.jar"/>
-    <copy file="${basedir}/lib/jna-3.2.4.jar" tofile="${artifact.output.smm:jar}/jna-3.2.4.jar"/>
-    <copy file="${basedir}/lib/jupidator-3.0.1.jar" tofile="${artifact.output.smm:jar}/jupidator-3.0.1.jar"/>
     <copy file="${basedir}/lib/commons-beanutils-1.8.2.jar" tofile="${artifact.output.smm:jar}/commons-beanutils-1.8.2.jar"/>
+    <copy file="${basedir}/lib/commons-codec-1.3.jar" tofile="${artifact.output.smm:jar}/commons-codec-1.3.jar"/>
+    <copy file="${basedir}/lib/commons-collections-3.2.1.jar" tofile="${artifact.output.smm:jar}/commons-collections-3.2.1.jar"/>
+    <copy file="${basedir}/lib/commons-digester-2.0.jar" tofile="${artifact.output.smm:jar}/commons-digester-2.0.jar"/>
     <copy file="${basedir}/lib/commons-httpclient-3.1.jar" tofile="${artifact.output.smm:jar}/commons-httpclient-3.1.jar"/>
+    <copy file="${basedir}/lib/commons-logging-1.1.1.jar" tofile="${artifact.output.smm:jar}/commons-logging-1.1.1.jar"/>
+    <copy file="${basedir}/lib/jna-3.2.4.jar" tofile="${artifact.output.smm:jar}/jna-3.2.4.jar"/>
     <copy file="${basedir}/lib/junit-4.5.jar" tofile="${artifact.output.smm:jar}/junit-4.5.jar"/>
+    <copy file="${basedir}/lib/jupidator-3.0.1.jar" tofile="${artifact.output.smm:jar}/jupidator-3.0.1.jar"/>
+    <copy file="${basedir}/lib/log4j-1.2.15.jar" tofile="${artifact.output.smm:jar}/log4j-1.2.15.jar"/>
+    <copy file="${basedir}/lib/xerces.jar" tofile="${artifact.output.smm:jar}/xerces.jar"/>
+    <copy file="${basedir}/lib/xml-apis.jar" tofile="${artifact.output.smm:jar}/xml-apis.jar"/>
     <copy file="${basedir}/lib/cobra/cobra-0.98.2.jar" tofile="${artifact.output.smm:jar}/cobra-0.98.2.jar"/>
     <copy file="${basedir}/lib/cobra/js.jar" tofile="${artifact.output.smm:jar}/js.jar"/>
-    <copy file="${basedir}/lib/drivers/mysql-connector-java-5.1.11-bin.jar" tofile="${artifact.output.smm:jar}/mysql-connector-java-5.1.11-bin.jar"/>
     <copy file="${basedir}/lib/drivers/hsqldb.jar" tofile="${artifact.output.smm:jar}/hsqldb.jar"/>
-    <copy file="${basedir}/lib/jython/jython.jar" tofile="${artifact.output.smm:jar}/jython.jar"/>
+    <copy file="${basedir}/lib/drivers/mysql-connector-java-5.1.11-bin.jar" tofile="${artifact.output.smm:jar}/mysql-connector-java-5.1.11-bin.jar"/>
     <copy file="${basedir}/lib/jython/jython-lib.jar" tofile="${artifact.output.smm:jar}/jython-lib.jar"/>
-    <copy file="${basedir}/lib/mac/quaqua.jar" tofile="${artifact.output.smm:jar}/quaqua.jar"/>
+    <copy file="${basedir}/lib/jython/jython.jar" tofile="${artifact.output.smm:jar}/jython.jar"/>
+    <copy file="${basedir}/lib/jython/jyson-1.0.2.jar" tofile="${artifact.output.smm:jar}/jyson-1.0.2.jar"/>
     <copy file="${basedir}/lib/mac/AppleJavaExtensions.jar" tofile="${artifact.output.smm:jar}/AppleJavaExtensions.jar"/>
+    <copy file="${basedir}/lib/mac/quaqua.jar" tofile="${artifact.output.smm:jar}/quaqua.jar"/>
     <copy file="${basedir}/lib/tmdb/commons-lang3-3.1.jar" tofile="${artifact.output.smm:jar}/commons-lang3-3.1.jar"/>
     <copy file="${basedir}/lib/tmdb/jackson-core-lgpl-1.9.5.jar" tofile="${artifact.output.smm:jar}/jackson-core-lgpl-1.9.5.jar"/>
     <copy file="${basedir}/lib/tmdb/jackson-mapper-lgpl-1.9.5.jar" tofile="${artifact.output.smm:jar}/jackson-mapper-lgpl-1.9.5.jar"/>
-    <copy file="${basedir}/lib/commons-logging-1.1.1.jar" tofile="${artifact.output.smm:jar}/commons-logging-1.1.1.jar"/>
-    <copy file="${basedir}/lib/xerces.jar" tofile="${artifact.output.smm:jar}/xerces.jar"/>
-    <copy file="${basedir}/lib/commons-codec-1.3.jar" tofile="${artifact.output.smm:jar}/commons-codec-1.3.jar"/>
-    <copy file="${basedir}/lib/log4j-1.2.15.jar" tofile="${artifact.output.smm:jar}/log4j-1.2.15.jar"/>
-    <copy file="${basedir}/lib/commons-collections-3.2.1.jar" tofile="${artifact.output.smm:jar}/commons-collections-3.2.1.jar"/>
-    <copy file="${basedir}/lib/xml-apis.jar" tofile="${artifact.output.smm:jar}/xml-apis.jar"/>
-    <copy file="${basedir}/lib/commons-digester-2.0.jar" tofile="${artifact.output.smm:jar}/commons-digester-2.0.jar"/>
     <copy file="${basedir}/lib/ant-contrib-0.6.jar" tofile="${artifact.output.smm:jar}/ant-contrib-0.6.jar"/>
-    <copy file="${basedir}/lib/jna-3.2.4.jar" tofile="${artifact.output.smm:jar}/jna-3.2.4.jar"/>
-    <copy file="${basedir}/lib/jupidator-3.0.1.jar" tofile="${artifact.output.smm:jar}/jupidator-3.0.1.jar"/>
     <copy file="${basedir}/lib/commons-beanutils-1.8.2.jar" tofile="${artifact.output.smm:jar}/commons-beanutils-1.8.2.jar"/>
+    <copy file="${basedir}/lib/commons-codec-1.3.jar" tofile="${artifact.output.smm:jar}/commons-codec-1.3.jar"/>
+    <copy file="${basedir}/lib/commons-collections-3.2.1.jar" tofile="${artifact.output.smm:jar}/commons-collections-3.2.1.jar"/>
+    <copy file="${basedir}/lib/commons-digester-2.0.jar" tofile="${artifact.output.smm:jar}/commons-digester-2.0.jar"/>
     <copy file="${basedir}/lib/commons-httpclient-3.1.jar" tofile="${artifact.output.smm:jar}/commons-httpclient-3.1.jar"/>
+    <copy file="${basedir}/lib/commons-logging-1.1.1.jar" tofile="${artifact.output.smm:jar}/commons-logging-1.1.1.jar"/>
+    <copy file="${basedir}/lib/jna-3.2.4.jar" tofile="${artifact.output.smm:jar}/jna-3.2.4.jar"/>
     <copy file="${basedir}/lib/junit-4.5.jar" tofile="${artifact.output.smm:jar}/junit-4.5.jar"/>
+    <copy file="${basedir}/lib/jupidator-3.0.1.jar" tofile="${artifact.output.smm:jar}/jupidator-3.0.1.jar"/>
+    <copy file="${basedir}/lib/log4j-1.2.15.jar" tofile="${artifact.output.smm:jar}/log4j-1.2.15.jar"/>
+    <copy file="${basedir}/lib/xerces.jar" tofile="${artifact.output.smm:jar}/xerces.jar"/>
+    <copy file="${basedir}/lib/xml-apis.jar" tofile="${artifact.output.smm:jar}/xml-apis.jar"/>
     <copy file="${basedir}/lib/cobra/cobra-0.98.2.jar" tofile="${artifact.output.smm:jar}/cobra-0.98.2.jar"/>
     <copy file="${basedir}/lib/cobra/js.jar" tofile="${artifact.output.smm:jar}/js.jar"/>
-    <copy file="${basedir}/lib/drivers/mysql-connector-java-5.1.11-bin.jar" tofile="${artifact.output.smm:jar}/mysql-connector-java-5.1.11-bin.jar"/>
     <copy file="${basedir}/lib/drivers/hsqldb.jar" tofile="${artifact.output.smm:jar}/hsqldb.jar"/>
-    <copy file="${basedir}/lib/jython/jython.jar" tofile="${artifact.output.smm:jar}/jython.jar"/>
+    <copy file="${basedir}/lib/drivers/mysql-connector-java-5.1.11-bin.jar" tofile="${artifact.output.smm:jar}/mysql-connector-java-5.1.11-bin.jar"/>
     <copy file="${basedir}/lib/jython/jython-lib.jar" tofile="${artifact.output.smm:jar}/jython-lib.jar"/>
-    <copy file="${basedir}/lib/mac/quaqua.jar" tofile="${artifact.output.smm:jar}/quaqua.jar"/>
+    <copy file="${basedir}/lib/jython/jython.jar" tofile="${artifact.output.smm:jar}/jython.jar"/>
+    <copy file="${basedir}/lib/jython/jyson-1.0.2.jar" tofile="${artifact.output.smm:jar}/jyson-1.0.2.jar"/>
     <copy file="${basedir}/lib/mac/AppleJavaExtensions.jar" tofile="${artifact.output.smm:jar}/AppleJavaExtensions.jar"/>
+    <copy file="${basedir}/lib/mac/quaqua.jar" tofile="${artifact.output.smm:jar}/quaqua.jar"/>
     <copy file="${basedir}/lib/tmdb/commons-lang3-3.1.jar" tofile="${artifact.output.smm:jar}/commons-lang3-3.1.jar"/>
     <copy file="${basedir}/lib/tmdb/jackson-core-lgpl-1.9.5.jar" tofile="${artifact.output.smm:jar}/jackson-core-lgpl-1.9.5.jar"/>
     <copy file="${basedir}/lib/tmdb/jackson-mapper-lgpl-1.9.5.jar" tofile="${artifact.output.smm:jar}/jackson-mapper-lgpl-1.9.5.jar"/>
   </target>
   
   <target name="build.all.artifacts" depends="artifact.smm:jar" description="Build all artifacts">
-    
     <!-- Delete temporary files -->
     <delete dir="${artifacts.temp.dir}"/>
   </target>
-  
+
+  <property name="mac.app.output.dir" value="${basedir}/output/SMM.App"/>
+
+  <target name="build.mac.app" depends="clean.mac.app, artifact.smm:jar" description="Build Mac App">
+    <mkdir dir="${mac.app.output.dir}"/>
+    <copy todir="${mac.app.output.dir}">
+      <fileset dir="${basedir}/resources/build_mac_app" />
+    </copy>
+    <copy todir="${mac.app.output.dir}/Contents/Resources/Java">
+      <fileset dir="${artifact.output.smm:jar}" />
+    </copy>
+  </target>
+
+  <target name="clean.mac.app" description="Clean Mac App">
+    <delete dir="${mac.app.output.dir}"/>
+  </target>
+
   <target name="all" depends="build.modules, build.all.artifacts" description="build all"/>
 </project>
