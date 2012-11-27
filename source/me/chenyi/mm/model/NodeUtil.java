@@ -3,8 +3,8 @@ package me.chenyi.mm.model;
 import java.io.File;
 import java.util.List;
 
+import me.chenyi.mm.MovieManager;
 import me.chenyi.mm.service.ServiceUtilities;
-import me.chenyi.mm.util.ConfigUtil;
 
 /**
  * Class description goes here
@@ -19,7 +19,7 @@ public class NodeUtil
         if (node == null || imageType == null)
             return null;
 
-        String imageSize = ConfigUtil.getInstance().getConfig(imageType + "_size");
+        String imageSize = MovieManager.getConfig().getConfig(imageType + "_size");
         if(imageSize == null)
         {
             List<String> imageSizeList = ServiceUtilities.getImageSizeList(imageType);

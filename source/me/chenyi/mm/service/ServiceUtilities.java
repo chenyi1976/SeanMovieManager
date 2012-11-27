@@ -11,8 +11,8 @@ import com.moviejukebox.themoviedb.IMovieService;
 import com.moviejukebox.themoviedb.TheMovieDb;
 import com.moviejukebox.themoviedb.model.MovieDb;
 import com.moviejukebox.themoviedb.model.TmdbConfiguration;
+import me.chenyi.mm.MovieManager;
 import me.chenyi.mm.model.*;
-import me.chenyi.mm.util.ConfigUtil;
 import me.chenyi.mm.util.FileUtil;
 import me.chenyi.mm.util.SysUtil;
 
@@ -31,7 +31,7 @@ public class ServiceUtilities
 
     static
     {
-        String configApiKey = ConfigUtil.getInstance().getConfig("apiKey");
+        String configApiKey = MovieManager.getConfig().getConfig("apiKey");
         API_KEY = configApiKey == null? "5a1a77e2eba8984804586122754f969f": configApiKey;
     }
 
@@ -126,7 +126,7 @@ public class ServiceUtilities
             return;
 
         Map<String, String> imageUrlMap = getImageUrlMap(urlPath, imageType);
-        String size = ConfigUtil.getInstance().getConfig(imageType + "_size");
+        String size = MovieManager.getConfig().getConfig(imageType + "_size");
         if (size == null)
         {
             List<String> imageSizeList = getImageSizeList(imageType);
