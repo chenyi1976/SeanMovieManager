@@ -1,3 +1,3 @@
 #from javax.swing import JOptionPane
-#JOptionPane.showMessageDialog(None, 'Hello World')
+#JOptionPane.showMessageDialog(getMainFrame(), 'Hello World')
 print 'Hello World'

@@ -80,7 +80,7 @@ public class MovieManagerFrame extends JFrame
 
         setJMenuBar(createMenuBar());
 
-        setVisible(true);
+//        setVisible(true);
 
         curtainPanel.setBottomComponent(INDEX_MAIN);//set the MovieMainPanel as the background panel.
 

@@ -2,6 +2,10 @@ package me.chenyi.mm.action;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.util.Date;
+
+import me.chenyi.mm.MovieManager;
+import me.chenyi.mm.util.Version;
 
 /**
  * Class description goes here
@@ -19,6 +23,11 @@ public class ShowAboutAction extends AbstractAction
     @Override
     public void actionPerformed(ActionEvent e)
     {
-        System.out.println("ShowAboutAction.actionPerformed");
+        int build = Version.getBuild();
+        Date datetime = Version.getDatetime();
+        String version = Version.getVersion();
+
+        JOptionPane.showMessageDialog(MovieManager.getFrame(),
+                                      "Sean's Movie Manager\nBuild:" + build + "\nDateTime:" + datetime + "\nVersion:" + version);
     }
 }

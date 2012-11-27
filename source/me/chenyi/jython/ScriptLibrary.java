@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.util.HashMap;
 import java.util.Map;
 
+import me.chenyi.mm.MovieManager;
+import me.chenyi.mm.MovieManagerFrame;
 import me.chenyi.mm.model.Attribute;
 import me.chenyi.mm.model.DatabaseUtil;
 import me.chenyi.mm.model.ModelUtils;
@@ -109,6 +111,11 @@ public class ScriptLibrary
     public int openUrlInBrowser(String url)
     {
         return SysUtil.openUrlInBrowser(url);
+    }
+
+    public MovieManagerFrame getMainFrame()
+    {
+        return MovieManager.getFrame();
     }
 
 }

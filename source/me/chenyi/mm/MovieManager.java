@@ -18,10 +18,16 @@ import java.util.List;
 public class MovieManager extends ThreadGroup
 {
     private static MovieManagerConfig config = new MovieManagerConfig();
+    private static MovieManagerFrame frame = new MovieManagerFrame();
 
     public MovieManager()
     {
         super("Sean's Movie Manager");
+    }
+
+    public static MovieManagerFrame getFrame()
+    {
+        return frame;
     }
 
     public static MovieManagerConfig getConfig()
@@ -56,7 +62,7 @@ public class MovieManager extends ThreadGroup
                     return;
                 }
 
-                MovieManagerFrame frame = new MovieManagerFrame();
+                frame.setVisible(true);
                 ScriptUtilities.executeScripts(ScriptTriggerType.OnAppStart);
             }
         };

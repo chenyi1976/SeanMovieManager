@@ -41,3 +41,7 @@ def getAttributeName(attributeId):
 
 def openUrlInBrowser(url):
     return scriptLibrary.openUrlInBrowser(url)
+
+def getMainFrame():
+    return scriptLibrary.getMainFrame()
+

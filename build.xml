@@ -3,6 +3,7 @@
   
   
   <property file="build.properties"/>
+
   <!-- Uncomment the following property if no tests compilation is needed -->
   <!-- 
   <property name="skip.tests" value="true"/>
@@ -306,9 +307,20 @@
     <delete dir="${artifacts.temp.dir}"/>
   </target>
 
+  <target name="versioninfo" depends="">
+    <propertyfile file="${basedir}/resources/versionInfo.properties" >
+      <entry key="build" type="int" default="0001" operation="+" pattern="0000"/>
+      <entry key="datetime" type="date" value="now" pattern="EEE MMM dd HH:mm:ss zzz yyyy"/>
+    </propertyfile>
+  </target>
+
   <property name="mac.app.output.dir" value="${basedir}/output/SMM.App"/>
 
-  <target name="build.mac.app" depends="clean.mac.app, artifact.smm:jar" description="Build Mac App">
+  <target name="clean.mac.app" description="Clean Mac App">
+    <delete dir="${mac.app.output.dir}"/>
+  </target>
+
+  <target name="build.mac.app" depends="clean.mac.app, versioninfo, artifact.smm:jar" description="Build Mac App">
     <mkdir dir="${mac.app.output.dir}"/>
     <copy todir="${mac.app.output.dir}">
       <fileset dir="${basedir}/resources/build_mac_app" />
@@ -316,10 +328,6 @@
     <copy todir="${mac.app.output.dir}/Contents/Resources/Java">
       <fileset dir="${artifact.output.smm:jar}" />
     </copy>
-  </target>
-
-  <target name="clean.mac.app" description="Clean Mac App">
-    <delete dir="${mac.app.output.dir}"/>
   </target>
 
   <target name="all" depends="build.modules, build.all.artifacts" description="build all"/>
