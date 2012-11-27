@@ -1,19 +1,4 @@
-/*
- * Copyright � 2000-2011 Innovit Pty Limited.  All rights reserved.
- *
- * The Intellectual Property Rights of Innovit Pty Limited in this source code
- * and the iICE software are protected under Australian and international
- * copyright law.  Unauthorised reproduction, distribution or use of this
- * software source code or any portion of either of them is expressly
- * prohibited and may result in severe civil or criminal penalties.
- */
 package me.chenyi.mm.util;
-
-// External imports
-// None
-
-// Local imports
-// None
 
 import javax.imageio.ImageIO;
 import java.awt.*;

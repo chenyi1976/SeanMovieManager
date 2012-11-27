@@ -1,17 +1,4 @@
-/**
- * Copyright � 2000-2003 Innovit Pty Limited.  All rights reserved.
- *
- * The Intellectual Property Rights of Innovit Pty Limited in this source code
- * and the iICE software are protected under Australian and international
- * copyright law.  Unauthorised reproduction, distribution or use of this
- * software source code or any portion of either of them is expressly
- * prohibited and may result in severe civil or criminal penalties.
- *
- */
-
 package me.chenyi.mm.util;
-
-// General imports
 
 import javax.imageio.ImageIO;
 import javax.imageio.ImageWriter;
@@ -29,10 +16,11 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.logging.Logger;
 
-
-// Application specific imports
-
-/** The controller of all the images within a JDK instance. All resources that wish to load an image should do so through this class. It provides caching of regularly used images thus reducing memory usage and ensuring mutliple instances are removed. */
+/**
+ * The controller of all the images within a JDK instance. All resources that wish to load an image should do so through
+ * this class. It provides caching of regularly used images thus reducing memory usage and ensuring mutliple instances
+ * are removed.
+ */
 public class ImageController
 {
     private static final Logger logger;

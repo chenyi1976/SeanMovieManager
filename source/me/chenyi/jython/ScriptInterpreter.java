@@ -242,7 +242,7 @@ public class ScriptInterpreter extends PythonInterpreter
         URL url = ScriptInterpreter.class.getResource("/" + item);
         // We should get something like
         // "jar:file:/C:/Documents and Settings/kejohnson/.javaws/cache/http/Dlocalhost/P80/DMdemo/DMlib/RMmyjython.jar!/__run__.py"
-        // or "vfszip:/D:/iICE/Server/jboss-5.1.0.GA/server/iICE/deploy/iMercury-test.ear/lib/InnovitCommon.jar/com/innovit/interpreter/resource/innovit.py"
+        // or "vfszip:/D:/iICE/Server/jboss-5.1.0.GA/server/iICE/deploy/iMercury-test.ear/lib/InnovationCommon.jar/resource/rules.py"
         if (url == null)
         {
             System.out.println("Main: getResource failed for " + item);
