@@ -4,6 +4,8 @@ import javax.swing.filechooser.FileSystemView;
 import java.awt.event.InputEvent;
 import java.io.*;
 import java.net.URL;
+import java.nio.channels.Channels;
+import java.nio.channels.ReadableByteChannel;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
 import java.util.Collection;
@@ -755,6 +757,25 @@ public class SysUtil {
             e.printStackTrace();
         }
         return result;
+    }
+
+    public static File downloadFileFromUrl(String url)
+    {
+        try
+        {
+            URL website = new URL(url);
+            ReadableByteChannel rbc = Channels.newChannel(website.openStream());
+            File tempFile = File.createTempFile("download", "smm");
+            FileOutputStream fos = new FileOutputStream(tempFile);
+            fos.getChannel().transferFrom(rbc, 0, 1 << 24);
+            tempFile.deleteOnExit();
+            return tempFile;
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+            return null;
+        }
     }
 
 }

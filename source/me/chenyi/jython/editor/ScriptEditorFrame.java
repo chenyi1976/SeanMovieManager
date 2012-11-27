@@ -13,6 +13,7 @@ import java.util.Map;
 import me.chenyi.jython.Script;
 import me.chenyi.jython.ScriptTriggerType;
 import me.chenyi.jython.ScriptUtilities;
+import me.chenyi.mm.util.ImageController;
 
 /**
  * Class description goes here
@@ -22,6 +23,11 @@ import me.chenyi.jython.ScriptUtilities;
  */
 public class ScriptEditorFrame extends JFrame
 {
+    private final String SAVE_ICON = "images/16x16/save.png";
+    private final String NEW_ICON = "images/16x16/add.png";
+    private final String DELETE_ICON = "images/16x16/delete.png";
+    private final String VALIDATE_ICON = "images/16x16/validate.png";
+
     private static ScriptEditorFrame instance = null;
 
     private JList scriptList;
@@ -58,33 +64,35 @@ public class ScriptEditorFrame extends JFrame
 
         getContentPane().setLayout(new GridBagLayout());
 
-        GridBagConstraints gbc = new GridBagConstraints(0, 0, 1, 3, 0.2, 1, GridBagConstraints.NORTHWEST,
-                                                        GridBagConstraints.BOTH, new Insets(5, 5, 5, 5), 0, 0);
+        GridBagConstraints gbc = new GridBagConstraints(0, 0, 1, 1, 0.2, 0, GridBagConstraints.NORTHWEST,
+                                                        GridBagConstraints.BOTH, new Insets(2, 5, 2, 5), 0, 0);
+
+        JPanel buttonPanel1 = new JPanel(new FlowLayout(FlowLayout.LEADING));
+
+        newButton = new JButton("", ImageController.loadIcon(NEW_ICON));
+        newButton.addActionListener(ea);
+        buttonPanel1.add(newButton);
+        deleteButton = new JButton("", ImageController.loadIcon(DELETE_ICON));
+        deleteButton.addActionListener(ea);
+        buttonPanel1.add(deleteButton);
+
+        getContentPane().add(buttonPanel1, gbc);
 
         scriptListModel = new DefaultListModel();
         scriptList = new JList(scriptListModel);
         scriptList.getSelectionModel().addListSelectionListener(ea);
 
+        gbc.gridy ++;
+        gbc.weighty = 1;
+        gbc.gridheight = 3;
         getContentPane().add(new JScrollPane(scriptList), gbc);
-
-        JPanel buttonPanel1 = new JPanel();
-
-        newButton = new JButton("New");//an icon should be better
-        newButton.addActionListener(ea);
-        buttonPanel1.add(newButton);
-        deleteButton = new JButton("Delete");
-        deleteButton.addActionListener(ea);
-        buttonPanel1.add(deleteButton);
-
-        gbc.gridy += gbc.gridheight;
-        gbc.weighty = 0;
-        gbc.gridheight = 1;
-        getContentPane().add(buttonPanel1, gbc);
 
         typeComboBox = new JComboBox(ScriptTriggerType.values());
 
         gbc.gridy = 0;
+        gbc.gridheight = 1;
         gbc.weightx = 0.8;
+        gbc.weighty = 0;
         gbc.gridx++;
         getContentPane().add(typeComboBox, gbc);
 
@@ -100,21 +108,27 @@ public class ScriptEditorFrame extends JFrame
 
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.TRAILING));
 
-        validateButton = new JButton("Check Python Syntax");
+        validateButton = new JButton("", ImageController.loadIcon(VALIDATE_ICON));
         validateButton.addActionListener(ea);
         buttonPanel.add(validateButton);
 
-        saveButton = new JButton("Save Script");
+        saveButton = new JButton("", ImageController.loadIcon(SAVE_ICON));
         saveButton.addActionListener(ea);
         buttonPanel.add(saveButton);
-
-        closeButton = new JButton("Close");
-        closeButton.addActionListener(ea);
-        buttonPanel.add(closeButton);
 
         gbc.gridy++;
         gbc.weighty = 0;
         getContentPane().add(buttonPanel, gbc);
+
+        JPanel buttonPanel2 = new JPanel(new FlowLayout(FlowLayout.TRAILING));
+
+        closeButton = new JButton("Close");
+        closeButton.addActionListener(ea);
+        buttonPanel2.add(closeButton);
+
+        gbc.gridy++;
+        gbc.weighty = 0;
+        getContentPane().add(buttonPanel2, gbc);
 
         loadScriptList();
     }
