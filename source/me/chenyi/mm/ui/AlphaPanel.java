@@ -2,7 +2,6 @@ package me.chenyi.mm.ui;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 
 /**
  * Class description goes here
@@ -21,11 +20,13 @@ public class AlphaPanel extends JPanel
     public AlphaPanel()
     {
         super();
+        setOpaque(false);
     }
 
     public AlphaPanel(LayoutManager layout)
     {
         super(layout);
+        setOpaque(false);
     }
 
     public float getAlpha()
