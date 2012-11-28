@@ -51,8 +51,9 @@ public class AlphaPanelTest
         AlphaPanel alphaPanel3 = new AlphaPanel();
         alphaPanel3.add(new JLabel("Opaque: false, image & color"));
         alphaPanel3.setSize(new Dimension(size, size));
-        alphaPanel3.setLocation(2*size, 0);
+        alphaPanel3.setLocation(2 * size, 0);
         alphaPanel3.setMaximumSize(new Dimension(size, size));
+        alphaPanel3.setBackground(Color.yellow);
         alphaPanel3.setBackgroundImage(
             new ImageIcon(alphaPanel.getClass().getResource("/images/gradient.png").getPath()).getImage());
         alphaPanel3.setAlpha(0.5f);
