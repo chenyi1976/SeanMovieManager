@@ -11,6 +11,7 @@ import me.chenyi.mm.model.DatabaseUtil;
 import me.chenyi.mm.model.ModelUtils;
 import me.chenyi.mm.model.Node;
 import me.chenyi.mm.service.ServiceUtilities;
+import me.chenyi.mm.ui.IndeterminateWaitDialog;
 import me.chenyi.mm.util.SysUtil;
 
 /**
@@ -116,6 +117,26 @@ public class ScriptLibrary
     public MovieManagerFrame getMainFrame()
     {
         return MovieManager.getFrame();
+    }
+
+    private IndeterminateWaitDialog waitDialog;
+    public void showWaitDialog(String waitText)
+    {
+        if (waitDialog == null)
+        {
+            waitDialog = new IndeterminateWaitDialog(MovieManager.getFrame());
+        }
+        waitDialog.setWaitText(waitText);
+        waitDialog.setVisible(true);
+    }
+
+    public void closeWaitDialog()
+    {
+        if (waitDialog == null)
+        {
+            return;
+        }
+        waitDialog.setVisible(false);
     }
 
 }

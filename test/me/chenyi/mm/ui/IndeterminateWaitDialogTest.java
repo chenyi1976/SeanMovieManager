@@ -25,13 +25,15 @@ import java.awt.event.ActionListener;
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                IndeterminateWaitDialog waitDialog = new IndeterminateWaitDialog(frame, "Wait", false, "Cancel");
-                waitDialog.showDialog(new Runnable(){
+                IndeterminateWaitDialog waitDialog = new IndeterminateWaitDialog(frame);
+                waitDialog.setWaitText("This task will last 10 seconds...");
+                waitDialog.showDialog(new Runnable()
+                {
 
                     @Override
                     public void run()
                     {
-                        for (int i = 0; i < 10; i ++)
+                        for(int i = 0; i < 10; i++)
                         {
                             System.out.println("i = " + i);
                             try

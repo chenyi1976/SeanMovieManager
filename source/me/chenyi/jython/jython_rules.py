@@ -45,3 +45,9 @@ def openUrlInBrowser(url):
 def getMainFrame():
     return scriptLibrary.getMainFrame()
 
+def showWaitDialog(waitText):
+    return scriptLibrary.showWaitDialog(waitText)
+
+def closeWaitDialog():
+    return scriptLibrary.closeWaitDialog()
+

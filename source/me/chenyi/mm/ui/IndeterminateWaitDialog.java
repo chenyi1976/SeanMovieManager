@@ -18,27 +18,26 @@ public class IndeterminateWaitDialog extends JDialog
 
     private JLabel messageLabel;
     private AnimationPanel animationPanel;
-    private String cancelText;
 
     private boolean cancelled;
-    private Component owner;
+    private JButton cancelButton;
 
-    public IndeterminateWaitDialog(Component owner, String waitText, String cancelText)
+    public IndeterminateWaitDialog(Window owner)
     {
-        this(owner, waitText, false, cancelText);
+        this(owner, "Waiting...", "", false, "");
     }
 
-    public IndeterminateWaitDialog(Component owner, String waitText, boolean includeCancelButton, String cancelText)
+    public IndeterminateWaitDialog(Window owner, String title, String waitText, boolean includeCancelButton, String cancelText)
     {
-        super(SwingUtilities.windowForComponent(owner), waitText, ModalityType.APPLICATION_MODAL);
-
-        this.owner = owner;
-        this.cancelText = cancelText;
+        super(owner, title, ModalityType.APPLICATION_MODAL);
 
         setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 
         getContentPane().setLayout(new BorderLayout());
         getContentPane().add(createDisplayPanel(includeCancelButton), BorderLayout.CENTER);
+
+        setWaitText(waitText);
+        setCancelText(cancelText);
     }
 
     public boolean isCancelled()
@@ -46,10 +45,6 @@ public class IndeterminateWaitDialog extends JDialog
         return cancelled;
     }
 
-
-    /**
-     *
-     */
     public void showDialog(Runnable r)
     {
         cancelled = false;
@@ -60,17 +55,15 @@ public class IndeterminateWaitDialog extends JDialog
         setVisible(true);
     }
 
-    public void setTask(String t)
+    public void setWaitText(String t)
     {
         messageLabel.setText(t);
     }
 
-    public Dimension getPreferredSize()
+    public void setCancelText(String t)
     {
-        Dimension d = super.getPreferredSize();
-        Dimension labelDim = messageLabel.getPreferredSize();
-
-        return new Dimension(d.width + labelDim.width, d.height);
+        if (cancelButton != null)
+            cancelButton.setText(t);
     }
 
     /**
@@ -83,7 +76,7 @@ public class IndeterminateWaitDialog extends JDialog
         if (v)
         {
             pack();
-            setLocationRelativeTo(owner);
+            setLocationRelativeTo(getParent());
 
             // set the size and position of the dialog
             animationPanel.start();
@@ -100,16 +93,15 @@ public class IndeterminateWaitDialog extends JDialog
         p.setBorder(new EmptyBorder(3, 3, 3, 3));
         p.setLayout(new BorderLayout(10, 10));
 
-        messageLabel = new JLabel("", JLabel.LEFT);
-        p.add(messageLabel, "Center");
+        messageLabel = new JLabel("");
+        p.add(messageLabel, BorderLayout.CENTER);
 
-//        Image image = ImageController.loadImage(IMAGE);
         animationPanel = new AnimationPanel(IMAGE);
-        p.add(animationPanel, "East");
+        p.add(animationPanel, BorderLayout.EAST);
 
         if (includeCancelButton)
         {
-            JButton cancelButton = new JButton(cancelText);
+            cancelButton = new JButton("");
             cancelButton.addActionListener(new ActionListener()
             {
                 public void actionPerformed(ActionEvent e)
