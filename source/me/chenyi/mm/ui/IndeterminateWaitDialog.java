@@ -29,7 +29,7 @@ public class IndeterminateWaitDialog extends JDialog
 
     public IndeterminateWaitDialog(Window owner, String title, String waitText, boolean includeCancelButton, String cancelText)
     {
-        super(owner, title, ModalityType.APPLICATION_MODAL);
+        super(owner, title, ModalityType.MODELESS);
 
         setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -52,6 +52,7 @@ public class IndeterminateWaitDialog extends JDialog
         Thread thread = new Thread(new RunnableWrapper(this, r));
         thread.start();
 
+        setModal(true);
         setVisible(true);
     }
 

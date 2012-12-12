@@ -61,7 +61,7 @@ public class JFlowPanel extends JPanel
 
     private Shape centerShape;
 
-	private Timer easingTimer;
+	private Timer autoScrollToCenterTimer;
 
 	private Timer commandRollerTimer;
 
@@ -177,17 +177,17 @@ public class JFlowPanel extends JPanel
             }
             double z = -config.zoomFactor * Math.pow(Math.abs(j), config.zoomScale);
             Point3D topLeft = new Point3D(
-                -config.shapeWidth / 2 + (config.scrollDirection == ComponentOrientation.LEFT_TO_RIGHT ? -1 : 1) * comp,
+                -config.shapeWidth / 2 + (config.shapeOrientation == ComponentOrientation.LEFT_TO_RIGHT ? -1 : 1) * comp,
                 top, 0);
             Point3D bottomRight = new Point3D(
-                config.shapeWidth / 2 + (config.scrollDirection == ComponentOrientation.LEFT_TO_RIGHT ? -1 : 1) * comp,
+                config.shapeWidth / 2 + (config.shapeOrientation == ComponentOrientation.LEFT_TO_RIGHT ? -1 : 1) * comp,
                 bottom, 0);
             pic.setCoordinates(topLeft, bottomRight);
             pic.setRotationMatrix(new RotationMatrix(0,
-                                                     (config.scrollDirection == ComponentOrientation.LEFT_TO_RIGHT ? 1 : -1) * config.shapeRotation * j,
+                                                     (config.shapeOrientation == ComponentOrientation.LEFT_TO_RIGHT ? 1 : -1) * config.shapeRotation * j,
                                                      0));
             pic.setLocation(new Point3D(
-                (config.scrollDirection == ComponentOrientation.LEFT_TO_RIGHT ? 1 : -1) * (-config.shapeSpacing * j + comp),
+                (config.shapeOrientation == ComponentOrientation.LEFT_TO_RIGHT ? 1 : -1) * (-config.shapeSpacing * j + comp),
                 0, z));
         }
     }
@@ -200,8 +200,7 @@ public class JFlowPanel extends JPanel
             Shape shape = flowModel.getShape(getShapeIndexByFlowPos(i));
 			if (shape instanceof Picture) {
 				Picture pic = (Picture) shape;
-				double height = config.shapeWidth * pic.getHeight()
-						/ pic.getWidth();
+				double height = config.shapeWidth * pic.getHeight() / pic.getWidth();
 				if (height > maxHeight) {
 					maxHeight = height;
 				}
@@ -337,13 +336,13 @@ public class JFlowPanel extends JPanel
         {
             commandRollerTimer.cancel();
         }
-        if(easingTimer != null)//cancel the easing timer, otherwise easing timer will mess the command roller timer.
+        if(autoScrollToCenterTimer != null)//cancel the easing timer, otherwise easing timer will mess the command roller timer.
         {
-            easingTimer.cancel();
+            autoScrollToCenterTimer.cancel();
         }
         commandRollerTimer = new Timer();
         double scrollOffset = (config.visibleShapeCount / 2) -  newShapeUiPos + scrollDelta;
-        commandRollerTimer.scheduleAtFixedRate(new CommandScroller(scrollOffset), 0, 100);
+        commandRollerTimer.scheduleAtFixedRate(new CommandScroller(scrollOffset), 0, (long)(config.commandRollerInterval * 1000));
     }
 
     private class AutoScroller extends TimerTask {
@@ -365,7 +364,7 @@ public class JFlowPanel extends JPanel
 
         public CommandScroller(double scrollOffset)
         {
-            taskCount = Math.round(config.commandRollerDuration / 0.1);
+            taskCount = Math.round(config.commandRollerDuration / config.commandRollerInterval);
 
             offsetPer = scrollOffset / taskCount;
 
@@ -388,7 +387,7 @@ public class JFlowPanel extends JPanel
 		}
 	}
 
-	private class DragEaser extends TimerTask {
+	private class AutoScrollToCenterTask extends TimerTask {
 		@Override
 		public void run() {
 			if (scrollDelta > 0)
@@ -408,7 +407,7 @@ public class JFlowPanel extends JPanel
 //            System.out.println("Eraser Scroller");
             setScrollRate(scrollDelta);
             if (scrollDelta == 0)
-				easingTimer.cancel();
+				autoScrollToCenterTimer.cancel();
 		}
 	}
 
@@ -476,9 +475,9 @@ public class JFlowPanel extends JPanel
         {
             if(config.autoScrollAmount == 0)
             {
-                if(easingTimer != null)
+                if(autoScrollToCenterTimer != null)
                 {
-                    easingTimer.cancel();
+                    autoScrollToCenterTimer.cancel();
                 }
             }
             if(e.getButton() == MouseEvent.BUTTON1)
@@ -497,14 +496,14 @@ public class JFlowPanel extends JPanel
                 dragging = false;
                 updateCursor();
                 checkActiveShape();
-                if(config.autoScrollAmount == 0)
+                if(config.autoScrollAmount == 0 && config.autoCentralizeShape)
                 {
-                    if(easingTimer != null)
+                    if(autoScrollToCenterTimer != null)
                     {
-                        easingTimer.cancel();
+                        autoScrollToCenterTimer.cancel();
                     }
-                    easingTimer = new Timer();
-                    easingTimer.scheduleAtFixedRate(new DragEaser(), 0, 100);
+                    autoScrollToCenterTimer = new Timer();
+                    autoScrollToCenterTimer.scheduleAtFixedRate(new AutoScrollToCenterTask(), 0, 100);
                 }
             }
         }
@@ -514,9 +513,9 @@ public class JFlowPanel extends JPanel
         {
             if(config.autoScrollAmount == 0)
             {
-                if(easingTimer != null)
+                if(autoScrollToCenterTimer != null)
                 {
-                    easingTimer.cancel();
+                    autoScrollToCenterTimer.cancel();
                 }
             }
             if(buttonOnePressed)
@@ -546,14 +545,14 @@ public class JFlowPanel extends JPanel
                               + (config.inverseScrolling ? dragRate : -dragRate));
 
             checkActiveShape();
-            if(config.autoScrollAmount == 0)
+            if(config.autoScrollAmount == 0 && config.autoCentralizeShape)
             {
-                if(easingTimer != null)
+                if(autoScrollToCenterTimer != null)
                 {
-                    easingTimer.cancel();
+                    autoScrollToCenterTimer.cancel();
                 }
-                easingTimer = new Timer();
-                easingTimer.scheduleAtFixedRate(new DragEaser(), 0, 100);
+                autoScrollToCenterTimer = new Timer();
+                autoScrollToCenterTimer.scheduleAtFixedRate(new AutoScrollToCenterTask(), 0, 100);
             }
         }
 

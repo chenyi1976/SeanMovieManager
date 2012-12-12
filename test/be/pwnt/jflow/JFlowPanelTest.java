@@ -2,6 +2,8 @@ package be.pwnt.jflow;
 
 import javax.swing.*;
 
+import java.awt.*;
+
 import be.pwnt.jflow.demo.DemoFlowModel;
 import be.pwnt.jflow.event.ShapeEvent;
 import be.pwnt.jflow.event.ShapeListener;
@@ -22,7 +24,15 @@ public class JFlowPanelTest {
         frame.setSize(800, 600);
 
         final DemoFlowModel demoModel = new DemoFlowModel();
-        final JFlowPanel flowPanel = new JFlowPanel(new Configuration(), demoModel);
+        Configuration config = new Configuration();
+        config.shapeRotation =  Math.PI / 30;
+        config.shapeSpacing = 0.4;
+//        config.scrollScale = 1.0;
+//        config.verticalShapeAlignment = Configuration.VerticalAlignment.TOP;
+//        config.scrollFactor = 10;
+//        config.autoScrollAmount = 1.0 / 16;
+//        config.shapeOrientation = ComponentOrientation.RIGHT_TO_LEFT;
+        final JFlowPanel flowPanel = new JFlowPanel(config, demoModel);
         flowPanel.addShapeListener(new ShapeListener()
         {
             @Override
@@ -55,10 +65,10 @@ public class JFlowPanelTest {
         frame.setVisible(true);
     }
 
-    @Test
-    public void testDiv()
-        throws Exception
-    {
-        System.out.println("(-2 % 100) = " + (-2 % 100));
-    }
+//    @Test
+//    public void testDiv()
+//        throws Exception
+//    {
+//        System.out.println("(-2 % 100) = " + (-2 % 100));
+//    }
 }
