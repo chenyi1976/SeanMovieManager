@@ -1,9 +1,12 @@
 package me.chenyi.jython;
 
+import javax.swing.*;
 import java.sql.Connection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import com.moviejukebox.themoviedb.model.MovieDb;
 import me.chenyi.mm.MovieManager;
 import me.chenyi.mm.MovieManagerFrame;
 import me.chenyi.mm.model.Attribute;
@@ -89,6 +92,19 @@ public class ScriptLibrary
         return ModelUtils.getAllMovieIds().size();
     }
 
+    public String[] searchMovieByName(String name)
+    {
+        List<MovieDb> movieDbs = ServiceUtilities.searchMovie(name);
+        String[] result = new String[movieDbs.size()];
+        int index = 0;
+        for(MovieDb movieDb : movieDbs)
+        {
+            result[index] = movieDb.getTitle();
+            index ++;
+        }
+        return result;
+    }
+
     public void addMovie(String name)
     {
         ServiceUtilities.addMovieInfoToDatabase(name, 1, true);
@@ -120,14 +136,29 @@ public class ScriptLibrary
     }
 
     private IndeterminateWaitDialog waitDialog;
-    public void showWaitDialog(String waitText)
+    public void showWaitDialog(final String waitText)
     {
         if (waitDialog == null)
         {
             waitDialog = new IndeterminateWaitDialog(MovieManager.getFrame());
         }
-        waitDialog.setWaitText(waitText);
-        waitDialog.setVisible(true);
+        if (SwingUtilities.isEventDispatchThread())
+        {
+            waitDialog.setWaitText(waitText);
+            waitDialog.setVisible(true);
+        }
+        else
+        {
+            SwingUtilities.invokeLater(new Runnable()
+            {
+                @Override
+                public void run()
+                {
+                    waitDialog.setWaitText(waitText);
+                    waitDialog.setVisible(true);
+                }
+            });
+        }
     }
 
     public void closeWaitDialog()
