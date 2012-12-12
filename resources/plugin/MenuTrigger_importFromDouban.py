@@ -1,6 +1,9 @@
 #get list from douban
+#not working now, the reason douban.com failed to parse 'start-index' parameter
+#whatever start-index you passed in, douban.com will return the first page.
 
-doubanUserId = "chenyi1976"
+#doubanUserId = "chenyi1976"
+doubanUserId = "34739251"
 #sleep time between each request, in seconds
 requestGap = 1
 #count per page to retrieve
@@ -103,8 +106,8 @@ class DoubanHandler(ContentHandler):
 #               line = line.encode('utf-8')
 #               fileHandler.writelines([line])
                addMovie(self.title)
-           except Exception as inst:
-               print inst
+           except Exception, err:
+               print err
                pass
            self.title  = ''
            self.author = ''
@@ -147,8 +150,9 @@ class DoubanHandler(ContentHandler):
 
 #fileHandler = open(doubanListFile, "a")
 while 1:
-#    try:
+    try:
        print "beign retrieve"
+       showWaitDialog("beign retrieve")
        for status in doubanStatus:
            for cat in doubanCategory:
                index = 1
@@ -156,7 +160,9 @@ while 1:
                    if retrieveLimitation > 0:
                        if index + countPerPage >= retrieveLimitation:
                            countPerPage = retrieveLimitation - index
-                   print "status:" + status + ", cat:" + cat + ', start:' + str(index) + ", count:" + str(countPerPage)
+                   statusText = "status:" + status + ", cat:" + cat + ', start:' + str(index) + ", count:" + str(countPerPage)
+                   print statusText
+                   showWaitDialog(statusText)
                    url = urllib.urlopen("http://api.douban.com/people/" + doubanUserId + "/collection?cat=" + cat + "&status=" + status + "&start-index=" + str(index) + "&max-results=" + str(countPerPage))
                    index += countPerPage
                    
@@ -167,21 +173,27 @@ while 1:
                    print foundResult
                    if not foundResult:
                        print "no result, break"
+                       showWaitDialog("no result, break")
                        break
 
                    if retrieveLimitation > 0:
                        if index >= retrieveLimitation:
                            print "limitation reached, break"
+                           showWaitDialog("limitation reached, break")
                            break
 
                    foundResult = False
-
-                   print "scan finished, begin sleep " + str(requestGap) + " seconds."
+                   statusText = "finished for status:" + status + ", cat:" + cat + ', start:' + str(index) + ", count:" + str(countPerPage) + "begin sleep."
+                   print statusText
+                   showWaitDialog(statusText)
                    time.sleep(requestGap)
-#    except:
+    except:
 #        skipFileHandler.close()
        print "exception, exit..."
+       showWaitDialog("exception, exit...")
 #       fileHandler.close()
        break
 print "all finished"
+time.sleep(1)
+closeWaitDialog()
 #fileHandler.close()
