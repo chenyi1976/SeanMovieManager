@@ -68,9 +68,9 @@ public class MovieMainPanel extends CurtainPagePanel
             if(node != null)
             {
                 detailPanel.setNode(node);
+                ScriptEnvironment.getInstance().setCurrentMovieId(node.getId());
+                ScriptUtilities.executeScripts(ScriptTriggerType.OnMovieSelected);
             }
-            ScriptEnvironment.getInstance().setCurrentMovieId(node.getId());
-            ScriptUtilities.executeScripts(ScriptTriggerType.OnMovieSelected);
         }
     }
 

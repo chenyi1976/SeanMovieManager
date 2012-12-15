@@ -17,8 +17,8 @@ import java.util.List;
  */
 public class MovieManager extends ThreadGroup
 {
-    private static MovieManagerConfig config = new MovieManagerConfig();
-    private static MovieManagerFrame frame = new MovieManagerFrame();
+    private static MovieManagerConfig config;
+    private static MovieManagerFrame frame;
 
     public MovieManager()
     {
@@ -41,6 +41,8 @@ public class MovieManager extends ThreadGroup
         {
             public void run()
             {
+                config = new MovieManagerConfig();
+
                 //if it is mac, make the JMenuBar show properly.
                 if (SysUtil.isMac()) {
                     System.setProperty("apple.laf.useScreenMenuBar", "true");
@@ -62,6 +64,8 @@ public class MovieManager extends ThreadGroup
                     return;
                 }
 
+
+                frame = new MovieManagerFrame();
                 frame.setVisible(true);
                 ScriptUtilities.executeScripts(ScriptTriggerType.OnAppStart);
             }
