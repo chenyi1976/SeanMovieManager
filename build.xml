@@ -320,15 +320,19 @@
     <delete dir="${mac.app.output.dir}"/>
   </target>
 
-  <target name="build.mac.app" depends="clean.mac.app, versioninfo, artifact.smm:jar" description="Build Mac App">
-    <mkdir dir="${mac.app.output.dir}"/>
-    <copy todir="${mac.app.output.dir}">
-      <fileset dir="${basedir}/resources/build_mac_app" />
-    </copy>
-    <copy todir="${mac.app.output.dir}/Contents/Resources/Java">
-      <fileset dir="${artifact.output.smm:jar}" />
-    </copy>
-  </target>
+    <target name="build.mac.app" depends="clean.mac.app, versioninfo, artifact.smm:jar" description="Build Mac App">
+        <mkdir dir="${mac.app.output.dir}"/>
+        <copy todir="${mac.app.output.dir}">
+            <fileset dir="${basedir}/resources/build_mac_app"/>
+        </copy>
+        <exec executable="chmod">
+            <arg value="555"/>
+            <arg value="${mac.app.output.dir}/Contents/MacOS/JavaApplicationStub"/>
+        </exec>
+        <copy todir="${mac.app.output.dir}/Contents/Resources/Java">
+            <fileset dir="${artifact.output.smm:jar}"/>
+        </copy>
+    </target>
 
-  <target name="all" depends="build.modules, build.all.artifacts" description="build all"/>
+    <target name="all" depends="build.modules, build.all.artifacts" description="build all"/>
 </project>

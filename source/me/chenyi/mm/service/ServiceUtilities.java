@@ -8,6 +8,7 @@ import java.util.*;
 import java.util.logging.Logger;
 
 import com.moviejukebox.themoviedb.IMovieService;
+import com.moviejukebox.themoviedb.MovieDbException;
 import com.moviejukebox.themoviedb.TheMovieDb;
 import com.moviejukebox.themoviedb.model.MovieDb;
 import com.moviejukebox.themoviedb.model.TmdbConfiguration;
@@ -234,6 +235,19 @@ public class ServiceUtilities
                 DatabaseUtil.closeConnection(connection);
             }
         }
+    }
+
+    public static List<MovieDb> searchMovie(String name)
+    {
+        try
+        {
+            return movieService.searchMovie(name, "", true);
+        }
+        catch(MovieDbException e)
+        {
+            e.printStackTrace();
+        }
+        return Collections.emptyList();
     }
 
     public static void addMovieInfoToDatabase(String name, int maxCount, boolean update)

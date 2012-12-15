@@ -11,9 +11,6 @@ import java.awt.*;
  */
 public class AlphaPanel extends JPanel
 {
-    //new ImageIcon(getClass().getResource("/images/black.png").getPath()).getImage();
-    //new ImageIcon(getClass().getResource("/images/white.png").getPath()).getImage();
-    //new ImageIcon(getClass().getResource("/images/gradient.png").getPath()).getImage();
     protected Image backgroundImage = null;
     protected float alpha = 1.0f;
 
@@ -21,12 +18,14 @@ public class AlphaPanel extends JPanel
     {
         super();
         setOpaque(false);
+        setBackground(new Color(0, 0, 0, 0));
     }
 
     public AlphaPanel(LayoutManager layout)
     {
         super(layout);
         setOpaque(false);
+        setBackground(new Color(0, 0, 0, 0));
     }
 
     public float getAlpha()
@@ -52,7 +51,10 @@ public class AlphaPanel extends JPanel
         super.paintComponent(g);
 
         Graphics2D g2 = (Graphics2D)g.create();
+//        g2.clearRect(0, 0, getWidth(), getHeight());
         g2.setComposite(AlphaComposite.SrcOver.derive(alpha));
+        g2.setColor(getBackground());
+        g2.fillRect(0, 0, getWidth(), getHeight());
         if(backgroundImage != null)
         {
             int width = backgroundImage.getWidth(null);
@@ -60,19 +62,16 @@ public class AlphaPanel extends JPanel
             float ratio = Math.min(((float)getHeight()) / height, ((float)getWidth()) / width);
             width = (int)(ratio * width);
             height = (int)(ratio * height);
-            int x = (getWidth() - width) / 2;;
+            int x = (getWidth() - width) / 2;
             int y = (getHeight() - height) / 2;
+            System.out.println("height = " + height);
+            System.out.println("width = " + width);
             g2.drawImage(backgroundImage,
                          x,
                          y,
                          width,
                          height,
                          this);
-        }
-        else
-        {
-            g2.setColor(getBackground());
-            g2.fillRect(0, 0, getWidth(), getHeight());
         }
     }
 }

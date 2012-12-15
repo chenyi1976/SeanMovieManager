@@ -160,6 +160,8 @@ public class Picture extends Rectangle {
 			return;
 		}
 		double dt = topR.getY() - topL.getY();
+        if (dt < config.dragEaseOutFactor)
+            dt = 0;
 		boolean mirror = (dt < 0);
 		if (mirror) {
 			dt = -dt;
