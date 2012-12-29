@@ -14,6 +14,7 @@ import me.chenyi.mm.action.ShowFilterPanelAction;
  */
 public class CurtainControlPanel extends CurtainPagePanel
 {
+
     public CurtainControlPanel(ICurtainController curtainController)
     {
         super(curtainController);
@@ -22,18 +23,22 @@ public class CurtainControlPanel extends CurtainPagePanel
         setBackground(Color.black);
         setAlpha(0.0f);
 
-        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.TRAILING));
-        buttonPanel.setOpaque(false);
-        buttonPanel.setBorder(BorderFactory.createLineBorder(Color.blue));
+//        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.TRAILING));
+//        buttonPanel.setOpaque(false);
+//        buttonPanel.setBorder(BorderFactory.createLineBorder(Color.blue));
 
         JButton addButton = new JButton(new ShowAddPanelAction(curtainController));
-        buttonPanel.add(addButton);
+//        buttonPanel.add(addButton);
         JButton filterButton = new JButton(new ShowFilterPanelAction(curtainController));
-        buttonPanel.add(filterButton);
+//        buttonPanel.add(filterButton);
 
         setLayout(new GridBagLayout());
-        add(buttonPanel, new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.NORTHEAST, GridBagConstraints.NONE,
-                                                new Insets(0, 0, 0, 0), 0, 0));
+        GridBagConstraints gbc = new GridBagConstraints(0, 0, 1, 1, 1, 1, GridBagConstraints.NORTHWEST, GridBagConstraints.NONE,
+                new Insets(0, 0, 0, 0), 0, 0);
+        add(addButton, gbc);
+        gbc.gridx ++;
+        gbc.anchor = GridBagConstraints.NORTHEAST;
+        add(filterButton, gbc);
     }
 
     @Override

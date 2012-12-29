@@ -26,7 +26,8 @@ public class MovieAddPanel extends CurtainPagePanel
         ea = new EventAdapter();
 
         setLayout(new GridBagLayout());
-        setBackground(Color.black);
+        setBackground(Color.gray);
+        setAlpha(0.5f);
 
         GridBagConstraints gbc = new GridBagConstraints(0, 0, 1, 1, 0, 0, GridBagConstraints.NORTHWEST, GridBagConstraints.NONE, new Insets(5,5,5,5), 0, 0);
 
@@ -67,7 +68,7 @@ public class MovieAddPanel extends CurtainPagePanel
                 if (textField.getText().trim().length() == 0)
                     return;
 
-                ServiceUtilities.addMovieInfoToDatabase(textField.getText(), -1, true);
+                ServiceUtilities.addMovieInfoToDatabase(textField.getText(), 1, true);
 
                 controller.pullUpAllComponent(false);
             }
