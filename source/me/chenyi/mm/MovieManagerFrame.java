@@ -37,14 +37,35 @@ public class MovieManagerFrame extends JFrame
     {
         super();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        setLocationRelativeTo(null);
-        setSize(800, 600);
+
+        int bounds_x = -1;
+        int bounds_y = -1;
+        int bounds_width = 800;
+        int bounds_height = 600;
+
+        try {
+            bounds_x = Integer.parseInt(MovieManager.getConfig().getConfig("bounds_x"));
+            bounds_y = Integer.parseInt(MovieManager.getConfig().getConfig("bounds_y"));
+            bounds_width = Integer.parseInt(MovieManager.getConfig().getConfig("bounds_width"));
+            bounds_height = Integer.parseInt(MovieManager.getConfig().getConfig("bounds_height"));
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+        if (bounds_x == -1)
+            setLocationRelativeTo(null);
+        setBounds(bounds_x, bounds_y, bounds_width, bounds_height);
 
         addWindowListener(new WindowAdapter()
         {
             @Override
             public void windowClosing(WindowEvent e)
             {
+                Rectangle bounds = getBounds();
+                MovieManager.getConfig().setConfig("bounds_x", String.valueOf(bounds.x));
+                MovieManager.getConfig().setConfig("bounds_y", String.valueOf(bounds.y));
+                MovieManager.getConfig().setConfig("bounds_width", String.valueOf(bounds.width));
+                MovieManager.getConfig().setConfig("bounds_height", String.valueOf(bounds.height));
+                MovieManager.getConfig().saveConfig();
                 super.windowClosing(e);
                 ScriptUtilities.executeScripts(ScriptTriggerType.OnAppExit);
             }

@@ -2,6 +2,7 @@ package me.chenyi.mm;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.util.Properties;
 import java.util.logging.Logger;
 
@@ -50,6 +51,22 @@ public class MovieManagerConfig
         if (detaultProperties.containsKey(configName))
             return String.valueOf(detaultProperties.get(configName));
         return null;
+    }
+
+    public void setConfig(String key, String value)
+    {
+        userProperties.put(key, value);
+    }
+
+    public void saveConfig()
+    {
+        try {
+            File f = new File(SysUtil.getConfigDir() + "/" + CONFIG_USER_PROPERTY);
+            userProperties.store(new FileOutputStream(f), "");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     private Properties loadDefaultConfig()

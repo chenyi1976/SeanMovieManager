@@ -26,8 +26,6 @@ public class MovieAddPanel extends CurtainPagePanel
         ea = new EventAdapter();
 
         setLayout(new GridBagLayout());
-        setBackground(Color.gray);
-        setAlpha(0.5f);
 
         GridBagConstraints gbc = new GridBagConstraints(0, 0, 1, 1, 0, 0, GridBagConstraints.NORTHWEST, GridBagConstraints.NONE, new Insets(5,5,5,5), 0, 0);
 

@@ -53,7 +53,7 @@ public class CurtainPanel2 extends JPanel implements ICurtainController
 //        }
 
         timeline = new Timeline(this);
-        timeline.setDuration(2500);
+        timeline.setDuration(600);
 
         addComponentListener(new ComponentAdapter()
         {
@@ -213,7 +213,7 @@ public class CurtainPanel2 extends JPanel implements ICurtainController
 //        timeline.addCallback();
         timeline.clearPropertyToInterpolate();
         Dimension size = getSize();
-        timeline.addPropertyToInterpolate("currentComponentSize", new Dimension(1, 1), size);
+        timeline.addPropertyToInterpolate("currentComponentSize", new Dimension(size.width/2, 1), size);
 
         if (isDown)
             timeline.play();
