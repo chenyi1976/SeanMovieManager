@@ -1,10 +1,14 @@
 package me.chenyi.jython;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.net.URL;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 
+import me.chenyi.mm.util.FileUtil;
 import me.chenyi.mm.util.SysUtil;
 
 /**
@@ -15,7 +19,11 @@ import me.chenyi.mm.util.SysUtil;
  */
 public class ScriptUtilities
 {
+    private final static String PLUGIN_CONFIG_PROPERTY = "plugin.config.properties";
+    private final static String PROPERTY_PLUGINS_AUTO_INSTALL = "plugins_auto_install";
+
     private static ScriptInterpreter interpreter = null;
+
     public static boolean executeScript(String pythonScript)
     {
         try
@@ -66,20 +74,20 @@ public class ScriptUtilities
     public static Map<ScriptTriggerType, Map<String, Script>> getScripts()
     {
         if (needReloadScript)
-            initScriptList();
+            loadScriptList();
         return scriptMap;
     }
 
     public static Map<String, Script> getScriptsByTriggerType(ScriptTriggerType triggerType)
     {
         if (needReloadScript)
-            initScriptList();
+            loadScriptList();
         if (scriptMap.containsKey(triggerType))
             return scriptMap.get(triggerType);
         return Collections.emptyMap();
     }
 
-    private static void initScriptList()
+    private static void loadScriptList()
     {
         scriptMap.clear();
         for(ScriptTriggerType triggerType : ScriptTriggerType.values())
@@ -113,5 +121,29 @@ public class ScriptUtilities
             scriptMap.put(triggerType, result);
         }
         needReloadScript = false;
+    }
+
+    public static void initPluginList()
+    {
+        Properties properties = new Properties();
+        URL url = ScriptUtilities.class.getResource("/config/" + PLUGIN_CONFIG_PROPERTY);
+        try {
+            properties.load(new FileInputStream(new File(url.getFile())));
+            String pluginsStr = String.valueOf(properties.get(PROPERTY_PLUGINS_AUTO_INSTALL));
+            String[] strings = pluginsStr.split(",");
+            File configDir = SysUtil.getConfigDir();
+            for (String string : strings) {
+                string = string.trim();
+                try {
+                    FileUtil.copyToDir("/plugin/" + string, new File(configDir.getAbsolutePath() + "/plugin/"), string);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        reloadScripts();
     }
 }

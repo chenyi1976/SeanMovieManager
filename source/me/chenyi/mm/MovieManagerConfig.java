@@ -2,7 +2,6 @@ package me.chenyi.mm;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.net.URL;
 import java.util.Properties;
 import java.util.logging.Logger;
 
@@ -61,8 +60,7 @@ public class MovieManagerConfig
         File defaultFile = new File(defaultConfigFilePath);
         if (!defaultFile.exists())
         {
-            URL resource = this.getClass().getResource("/config/" + CONFIG_DEFAULT_PROPERTY);
-            FileUtil.copyToDir(new File(resource.getFile()), SysUtil.getConfigDir());
+            FileUtil.copyToDir("/config/" + CONFIG_DEFAULT_PROPERTY, SysUtil.getConfigDir(), CONFIG_DEFAULT_PROPERTY);
         }
         FileInputStream fis = new FileInputStream(defaultFile);
         configProperties.load(fis);
@@ -77,8 +75,7 @@ public class MovieManagerConfig
         File userFile = new File(filePath);
         if (!userFile.exists())
         {
-            URL resource = this.getClass().getResource("/config/" + CONFIG_USER_PROPERTY);
-            FileUtil.copyToDir(new File(resource.getFile()), SysUtil.getConfigDir());
+            FileUtil.copyToDir("/config/" + CONFIG_USER_PROPERTY, SysUtil.getConfigDir(), CONFIG_USER_PROPERTY);
         }
         FileInputStream fis = new FileInputStream(userFile);
         configProperties.load(fis);

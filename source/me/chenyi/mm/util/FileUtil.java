@@ -582,6 +582,30 @@ public class FileUtil {
         	log.error("Exception:" + e.getMessage(), e);
         }
     }
+
+
+    public static void copyToDir(String resourcePath, File dir, String fileName) throws Exception {
+        InputStream stream = FileUtil.class.getResourceAsStream(resourcePath);
+
+        if (!dir.isDirectory() && !dir.mkdirs())
+            throw new Exception("Failed to create directores:" + dir);
+
+        if (fileName == null || "".equals(fileName))
+            throw new Exception("Failed to get file name:" + fileName);
+
+        int readBytes;
+        byte[] buffer = new byte[4096];
+        try {
+            OutputStream outputStream = new FileOutputStream(new File(dir, fileName));
+            while ((readBytes = stream.read(buffer)) > 0) {
+                outputStream.write(buffer, 0, readBytes);
+            }
+            outputStream.close();
+            stream.close();
+        } catch (IOException e) {
+            log.error("Exception:" + e.getMessage(), e);
+        }
+    }
     
     /*
      * Calculate size of files in directory and subdirectories
@@ -598,7 +622,7 @@ public class FileUtil {
     		if (regex != null && !Pattern.matches(regex, file.getName())) {
     			return 0;
     		}
-    		
+
     		File[]	files = file.listFiles();
 
     		for (int i = 0; i < files.length; i++) {

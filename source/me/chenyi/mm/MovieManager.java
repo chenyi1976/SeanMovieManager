@@ -1,5 +1,6 @@
 package me.chenyi.mm;
 
+import me.chenyi.jython.Script;
 import me.chenyi.jython.ScriptTriggerType;
 import me.chenyi.jython.ScriptUtilities;
 import me.chenyi.mm.model.DatabaseUtil;
@@ -8,6 +9,7 @@ import me.chenyi.mm.util.SysUtil;
 
 import javax.swing.*;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Class description goes here
@@ -64,6 +66,15 @@ public class MovieManager extends ThreadGroup
                     return;
                 }
 
+                Map<ScriptTriggerType,Map<String,Script>> scripts = ScriptUtilities.getScripts();
+                int scriptCount = 0;
+                for (Map<String, Script> map : scripts.values()) {
+                    scriptCount += map.size();
+                }
+                if (scriptCount == 0)
+                {
+                    ScriptUtilities.initPluginList();
+                }
 
                 frame = new MovieManagerFrame();
                 frame.setVisible(true);
