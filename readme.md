@@ -23,7 +23,9 @@ Please let me know if anything is wrong.
 
 # How it look like #
 
-Here is the screenshot(todo)
+Here is the screenshot
+
+![screenshot](https://github.com/chenyi1976/SeanMovieManager/tree/master/resources/screenshot/SMM_1.png)
 
 # Why SMM is speical #
 
