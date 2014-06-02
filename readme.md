@@ -25,7 +25,7 @@ Please let me know if anything is wrong.
 
 Here is the screenshot
 
-![screenshot](https://github.com/chenyi1976/SeanMovieManager/tree/master/resources/screenshot/SMM_1.png)
+![screenshot](http://chenyi.me/lab/smm/SMM_2.jpg)
 
 # Why SMM is speical #
 
